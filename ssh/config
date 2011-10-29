@@ -1,5 +1,5 @@
 # EC2 tunnel
-Host hypodermia
+Host hypodermia.me
 	Hostname		hypodermia.me
 	User			hypodermia
 	TcpKeepAlive	yes
@@ -10,7 +10,7 @@ Host hypodermia
 	DynamicForward	8000
 
 # Rentrak
-Host voddev1
+Host voddev1.remote
 	TcpKeepAlive	yes
 	User			estrickland
 	Hostname		voddev1.pdx.rentrak.com
@@ -18,10 +18,10 @@ Host voddev1
 	ForwardAgent	yes
 	IdentitiesOnly	yes
 	IdentityFile	~/.ssh/id_rsa
-	ProxyCommand	ssh rlogin1 nc %h %p
+	ProxyCommand	ssh rlogin1.remote nc %h %p
 	DynamicForward	9000
 
-Host rlogin1
+Host rlogin1.remote
 	TcpKeepAlive	yes
 	User			estrickland
 	Hostname		rlogin1.rentrak.com
