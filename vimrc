@@ -8,7 +8,7 @@ if has('unnamedplus') | set clipboard=unnamedplus | endif
 "set numberwidth=4
 set ruler
 if has('persistent_undo')
-	set undodir=~/.vim/temp/undo/
+	set undodir=~/.vim/local/undo/
 	set undofile
 	set undolevels=100000
 	if exists('+undoreload')  | set undoreload=100000 | endif
@@ -30,8 +30,8 @@ set ttyfast
 set scrolloff=3
 set nostartofline
 set backup
-set backupdir=~/.vim/temp/backup/
-set directory=~/.vim/temp/
+set backupdir=~/.vim/local/backup/
+set directory=~/.vim/local/
 set autowrite
 set backspace=indent,eol,start
 set splitbelow
