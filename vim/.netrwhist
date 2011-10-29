@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/data_storage/work/estrickland/178578-generate-needed-ood-xtns/perl_lib/RTK/VOD'
-let g:netrw_dirhist_2='/data_storage/work/estrickland/178578-generate-needed-ood-xtns/perl_lib/RTK'
-let g:netrw_dirhist_3='/data_storage/work/estrickland/178578-generate-needed-ood-xtns/perl_lib/RTK/VOD'
-let g:netrw_dirhist_4='/data_storage/work/estrickland/178578-generate-needed-ood-xtns/perl_lib/RTK'
-let g:netrw_dirhist_5='/data_storage/work/estrickland/178578-generate-needed-ood-xtns/perl_lib/RTK/MusicChoice'
-let g:netrw_dirhist_6='/data_storage/work/estrickland/178578-generate-needed-ood-xtns/perl_lib/RTK/VOD/Utilities/TEST'
-let g:netrw_dirhist_7='/data_storage/work/estrickland/178578-generate-needed-ood-xtns/perl_lib/RTK/VOD/Utilities'

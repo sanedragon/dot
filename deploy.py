@@ -16,7 +16,7 @@ files_to_ignore = (
 )
 
 def main():
-    home_dir = os.environ['HOME']
+    home_dir = os.path.expanduser('~')
     repo_dir = os.path.dirname(os.path.realpath(__file__))
 
     print 'Home directory: %s' % home_dir
