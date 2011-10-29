@@ -1,0 +1,97 @@
+# useful aliases
+alias rm='rm -i'
+alias alert="echo -e '\a'"
+alias grrl='man'
+
+if [[ -e '/usr/bin/ack-grep' ]]; then alias ack='/usr/bin/ack-grep'; fi
+if [[ -e '/usr/bin/htop' ]]; then alias top='/usr/bin/htop'; fi
+
+alias vi='vim'
+
+# ls aliases
+if ls --version 2> /dev/null | grep -q 'GNU coreutils'
+then
+  export GREP_OPTIONS='--color=auto'
+  alias ls="ls --color=auto --classify --block-size=\'1"
+fi
+alias lh='ls -Ad .*'
+alias l='ls -alFht'
+alias ll='ls -alF'
+alias la='ls -A'
+
+# git aliases
+alias gl='git lg --all'
+alias glw='glp --word-diff'
+alias gco='git co'
+alias gcp='git co -p'
+alias gs='git status'
+alias gst='echo Use \`gs\` :\) >&2; false'
+alias gd='git diff'
+alias gdw='git --no-pager diff --word-diff'
+alias gds='gd --cached'
+alias gdsw='gdw --cached'
+alias gar='git reset HEAD'
+alias garp='git reset -p HEAD'
+alias gap='git add -p'
+alias gau='git ls-files --other --exclude-standard -z | xargs -0 git add -Nv'
+alias gaur="git ls-files --exclude-standard --modified -z | xargs -0 git ls-files --stage -z | awk 'BEGIN { RS=\"\0\"; FS=\"\t\"; ORS=\"\0\" } { if (\$1 ~ / e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 /) { sub(/^[^\t]+\t/, \"\", \$0); print } }' | xargs -0t -n 1 git reset -q -- 2>&1 | sed -e \"s/^git reset -q -- /reset '/\" -e \"s/ *$/'/\""
+alias gc='git commit -v'
+alias gca='gc --amend'
+alias grt='git_current_tracking > /dev/null && git rebase -i $(git_current_tracking)'
+alias gp='git push'
+alias bo='bundle open'
+alias be='bundle exec'
+alias ber='bundle exec rspec --drb --format=doc'
+alias bec='bundle exec cucumber --drb'
+alias cuke='CUCUMBER_FORMAT=pretty bec'
+alias besr='bundle exec spork rspec'
+alias besc='bundle exec spork cucumber'
+alias rc='rails_command console'
+alias rs='rails_command server'
+alias rake='bundle exec rake'
+alias timestamp='gawk "{now=strftime(\"%F %T \"); print now \$0; fflush(); }"'
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# RENTRAK
+alias ick="ack -G '^(?!TEST|prototype)(.(?!TEST|prototype))*$' --type-set=img=.jpg,.gif,.svg,.png,.tif,.bmp --type-set=fo=.fo --noimg --nocss"
+alias uck="ack -G 'TEST'"
+
+# databases
+alias rentask='psql -h fmoviesdb.pdx -U rentask rentask_live'
+
+# promo databases
+alias promo_live='psql -h addb1.vw -p 5432 -U estrickland promo_live'
+alias promo_dev='psql promo_dev  -h mcdevdb1 -U promo -p 5433'
+#alias promo_dev='psql -h voddb7 -p 5432 -U estrickland promo_dev'
+
+# VOD databases
+alias vod_live='psql -h vodlivedb1.vw -p 5432 -U estrickland vod_live_full'
+alias vod_dev='psql -h thumper3.vw -p 5432 -U estrickland vod_dev'
+alias vod_dev_write='psql -h thumper3.vw -p 5432 -U vod vod_dev'
+alias vod_replica='psql -h thumper2.vw -p 5432 -U estrickland vod_live_replica1'
+alias vod_test='psql -h voddb7.vw -p 5440 -U vod vod_test1'
+
+# MC databases
+alias mc_live='psql -h mcdb1 -p 5432 -U estrickland mc_live'
+alias mc_dev='psql -h mcdevdb1 -p 5432 -U mc mc_dev'
+
+# ITV databases
+alias itv_live='psql -h mobiledb2.vw -p 5432 -U estrickland onlinevideo_live'
+alias itv_dev='psql -h mobiledevdb1 -p 5432 -U onlinevideo onlinevideo_dev'
+
+# mobile
+alias mobile_live='psql -h mobilelivedb1.vw -p 5432 -U estrickland mobile_live'
+
+# multi_screen
+alias multi_live='psql -h mobiledb2.vw -p 5432 -U estrickland multi_screen_live'
+
+# rentcorp
+alias rent_live='psql -h fmoviesdb.pdx -p 5432 -U estrickland rentcorp_live'
