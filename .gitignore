@@ -1,4 +1,4 @@
-vim/local/
+vim/local/*
 vim/.netrwhist
 vim/.VimballRecord
 ssh/id_rsa
