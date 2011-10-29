@@ -1,8 +1,10 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
-Intelligently links files in this directory to corresponding dot files in the
-home directory.
+Intelligently and interactively installs dot files from the same directory using
+symbolic links from the home directory.
 """
+
 import os
 import sys
 
@@ -13,25 +15,54 @@ files_to_ignore = (
 )
 
 def main():
-    home_directory = os.environ['HOME']
-    script_directory = os.path.dirname(os.path.realpath(__file__))
+    home_dir = os.environ['HOME']
+    repo_dir = os.path.dirname(os.path.realpath(__file__))
 
-    files = get_files().sort()
-    for file in files_to_ignore:
-        files.remove(file)
+    print "Home directory: %s" % home_dir
+    print "Repo directory: %s" % repo_dir
 
-def get_files(script_directory):
-    """
-    Get list of files in the current directory.
-    """
-    pass
+    dot_files = os.listdir(repo_dir)
+    dot_files.sort()
 
-def replace_file():
-    """
-    Remove existing dot file and replace with a link to a corresponding file
-    in this directory.
-    """
-    pass
+    replace_all = False
+
+    for dot_file in dot_files:
+        if dot_file.startswith('.') or dot_file in files_to_ignore:
+            continue
+
+        full_dot_file = os.path.join(repo_dir, dot_file)
+        proposed_link_file = os.path.join(home_dir, '.' + dot_file)
+
+        if os.path.exists(proposed_link_file):
+            if os.path.islink(proposed_link_file):
+                if os.readlink(proposed_link_file) == full_dot_file:
+                    print 'Skipping already deployed dot file: %s' % dot_file
+
+            if replace_all:
+                answer = 'y'
+            else:
+                answer = raw_input('Overwrite? %s [ynaq]' % dot_file).strip()
+
+            if answer == 'q':
+                print 'Quitting'
+                sys.exit()
+            elif answer == 'n':
+                print 'Skipping'
+                continue
+            elif answer in ('a', 'y'):
+                if answer == 'a':
+                    replace_all = True
+
+                print full_dot_file + ' => ' + proposed_link_file
+                os.remove(proposed_link_file)
+                os.symlnk(full_dot_file, proposed_link_file)
+            else:
+                print 'Did not understand input. Quitting.'
+                sys.exit()
+
+        else:
+            print full_dot_file + ' => ' + proposed_link_file
+            os.symlnk(full_dot_file, proposed_link_file)
 
 if __name__ == '__main__':
-    pass
+    main()
