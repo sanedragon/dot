@@ -1,4 +1,6 @@
-vim/local/*
+vim/local/undo/*
+vim/local/backup/*
+vim/local/*.swp
 vim/.netrwhist
 vim/.VimballRecord
 ssh/id_rsa
