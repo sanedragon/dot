@@ -10,6 +10,9 @@ if [ -d ~/.ssh ]; then
     chmod 600 .ssh/* 2> /dev/null
 fi
 
+ssh-add &> /dev/null
+umask 002
+
 ## RTK
 if $(hostname | grep -q dev) ; then
   workdir=/data_storage/work/$(whoami)
