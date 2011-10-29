@@ -15,7 +15,7 @@ files_to_ignore = (
     'README.md'
 )
 
-possible_ssh_key_files = (
+possible_ssh_private_key_files = (
     'id_rsa',
     'id_dsa'
 )
@@ -39,7 +39,7 @@ def main():
         # git shouldn't have a private key (correctly so)
         # so it needs to be moved aside and restored after
         if dot_file == '.ssh':
-            for key_file in possible_ssh_key_files:
+            for key_file in possible_ssh_private_key_files:
                 full_key_file = os.path.join(home_dir, '.ssh', key_file)
                 temp_key_file = os.path.join(home_dir, key_file)
                 if os.path.exists(full_key_file):
@@ -86,7 +86,7 @@ def main():
 
         finally:
             if dot_file == '.ssh':
-                for key_file in possible_ssh_key_files:
+                for key_file in possible_ssh_private_key_files:
                     full_key_file = os.path.join(home_dir, '.ssh', key_file)
                     temp_key_file = os.path.join(home_dir, key_file)
                     if os.path.exists(temp_key_file):
