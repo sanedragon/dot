@@ -1,26 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
+'''
 Intelligently and interactively installs dot files from the same directory using
 symbolic links from the home directory.
-"""
+'''
 
 import os
 import sys
 import shutil
 
 files_to_ignore = (
-    "deploy.py",
-    "LICENSE",
-    "README.md"
+    'deploy.py',
+    'LICENSE',
+    'README.md'
 )
 
 def main():
     home_dir = os.environ['HOME']
     repo_dir = os.path.dirname(os.path.realpath(__file__))
 
-    print "Home directory: %s" % home_dir
-    print "Repo directory: %s" % repo_dir
+    print 'Home directory: %s' % home_dir
+    print 'Repo directory: %s' % repo_dir
 
     dot_files = os.listdir(repo_dir)
     dot_files.sort()
@@ -71,3 +71,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
