@@ -43,10 +43,14 @@ export TZ="America/Los_Angeles"
 
 # prompt
 source git-completion.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM='auto'
+
 source bash-colors.sh
-#export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ 'i
 export PS1="${BGreen}\W${Color_Off}\$(__git_ps1 \" ${BPurple}(%s)${Color_Off}\") ${BIYellow}⚡${Color_Off} "
-#export PS1="\W$(__git_ps1 " \[\033[1;35m\](%s)") \[\033[1;93m\]⚡ \[\033[0m\]" # colors
+#export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ 'i
 #export PS1="\W$(__git_ps1 "(%s)") ⚡ " # no colors
 
 # history
