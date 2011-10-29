@@ -17,7 +17,8 @@ files_to_ignore = (
 
 possible_ssh_private_key_files = (
     'id_rsa',
-    'id_dsa'
+    'id_dsa',
+    'hypodermia.pem'
 )
 
 def main():
