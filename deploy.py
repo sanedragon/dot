@@ -7,6 +7,7 @@ symbolic links from the home directory.
 
 import os
 import sys
+import shutil
 
 files_to_ignore = (
     "deploy.py",
@@ -55,7 +56,10 @@ def main():
                     replace_all = True
 
                 print full_dot_file + ' => ' + proposed_link_file
-                os.remove(proposed_link_file)
+                try:
+                    os.remove(proposed_link_file)
+                except OSError:
+                    shutil.rmtree(proposed_link_file)
                 os.symlink(full_dot_file, proposed_link_file)
             else:
                 print 'Did not understand input. Quitting.'
