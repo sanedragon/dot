@@ -3,17 +3,25 @@
 set nocompatible
 set encoding=utf-8
 set number
-if exists('+relativenumber') | set relativenumber | endif
-if has('unnamedplus') | set clipboard=unnamedplus | endif
+if exists('+relativenumber')
+	set relativenumber
+endif
+if has('unnamedplus')
+	set clipboard=unnamedplus
+endif
 "set numberwidth=4
 set ruler
 if has('persistent_undo')
 	set undodir=~/.vim/local/undo/
 	set undofile
 	set undolevels=100000
-	if exists('+undoreload')  | set undoreload=100000 | endif
+	if exists('+undoreload')
+		set undoreload=100000
+	endif
 endif
-if exists('+cryptmethod') | set cryptmethod=blowfish | endif
+if exists('+cryptmethod')
+	set cryptmethod=blowfish
+endif
 let mapleader = ","
 "set digraph
 set modeline
@@ -42,9 +50,10 @@ if has('mouse') | set mouse=a | endif
 set t_Co=256
 set background=dark
 colorscheme tomorrow-night-eighties
-if exists('+colorcolumn') | set colorcolumn=80,120 | endif
+if exists('+colorcolumn')
+	set colorcolumn=80,120
+endif
 set showtabline=0
-set switchbuf=newtab
 syntax on
 let loaded_matchparen = 0
 set cursorline
