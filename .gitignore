@@ -1,11 +1,3 @@
-vim/local/undo/*
-vim/local/backup/*
-vim/local/*.swp
-vim/.netrwhist
-vim/.VimballRecord
-ssh/id_rsa
-ssh/id_dsa
-ssh/*.pem
 *.pem
 id_rsa
 id_dsa
