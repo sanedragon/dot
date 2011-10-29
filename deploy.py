@@ -36,18 +36,19 @@ def main():
         if os.path.exists(proposed_link_file):
             if os.path.islink(proposed_link_file):
                 if os.readlink(proposed_link_file) == full_dot_file:
-                    print 'Skipping already deployed dot file: %s' % dot_file
+                    print 'Skipping already deployed dot file: %s' % proposed_link_file
+                    continue
 
             if replace_all:
                 answer = 'y'
             else:
-                answer = raw_input('Overwrite? %s [ynaq]' % dot_file).strip()
+                answer = raw_input('Overwrite? %s [ynaq]: ' % proposed_link_file).strip()
 
             if answer == 'q':
-                print 'Quitting'
+                print 'Quitting without overwriting %s' % proposed_link_file
                 sys.exit()
             elif answer == 'n':
-                print 'Skipping'
+                print 'Skipping %s' % proposed_link_file
                 continue
             elif answer in ('a', 'y'):
                 if answer == 'a':
@@ -55,14 +56,14 @@ def main():
 
                 print full_dot_file + ' => ' + proposed_link_file
                 os.remove(proposed_link_file)
-                os.symlnk(full_dot_file, proposed_link_file)
+                os.symlink(full_dot_file, proposed_link_file)
             else:
                 print 'Did not understand input. Quitting.'
                 sys.exit()
 
         else:
             print full_dot_file + ' => ' + proposed_link_file
-            os.symlnk(full_dot_file, proposed_link_file)
+            os.symlink(full_dot_file, proposed_link_file)
 
 if __name__ == '__main__':
     main()
