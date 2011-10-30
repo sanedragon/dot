@@ -1,6 +1,7 @@
 # EC2 tunnel
 Host hypodermia.me
-	Hostname		hypodermia.me
+#	Hostname		hypodermia.me
+	Hostname		ec2-50-18-33-222.us-west-1.compute.amazonaws.com
 	User			hypodermia
 	TcpKeepAlive	yes
 	ForwardX11		yes
