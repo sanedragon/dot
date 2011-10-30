@@ -10,6 +10,17 @@ Host hypodermia.me
 	IdentityFile	~/.ssh/id_rsa
 	DynamicForward	8000
 
+Host ec2
+#	Hostname		hypodermia.me
+	Hostname		ec2-50-18-33-222.us-west-1.compute.amazonaws.com
+	User			ec2-user
+	TcpKeepAlive	yes
+	ForwardX11		yes
+	ForwardAgent	yes
+	IdentitiesOnly	yes
+	IdentityFile	~/.ssh/hypodermia.pem
+	DynamicForward	8000
+
 # Rentrak
 Host voddev1.remote
 	TcpKeepAlive	yes
