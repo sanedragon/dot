@@ -1,7 +1,6 @@
 # EC2 tunnel
 Host hypodermia.me
-#	Hostname		hypodermia.me
-	Hostname		ec2-50-18-33-222.us-west-1.compute.amazonaws.com
+	Hostname		hypodermia.me
 	User			hypodermia
 	TcpKeepAlive	yes
 	ForwardX11		yes
@@ -11,8 +10,7 @@ Host hypodermia.me
 	DynamicForward	8000
 
 Host ec2
-#	Hostname		hypodermia.me
-	Hostname		ec2-50-18-33-222.us-west-1.compute.amazonaws.com
+	Hostname		hypodermia.me
 	User			ec2-user
 	TcpKeepAlive	yes
 	ForwardX11		yes
