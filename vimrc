@@ -43,7 +43,9 @@ set directory=~/.vim/local/
 set autowrite
 set backspace=indent,eol,start
 set splitbelow
-if has('mouse') | set mouse=a | endif
+if has('mouse')
+	set mouse=a
+endif
 
 "##### appearance #####
 
@@ -177,7 +179,8 @@ nmap <F3> :set hls!<CR>
 nnoremap <F2> :set list!<CR>
 
 " insert date
-map <F4> :r !date<CR>
+nnoremap <F5> "=strftime("%d %b %Y %H:%M:%S")<CR>P
+inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
 
 " highlight cursor's current column
 map <F6>  :set cursorcolumn!<CR>
@@ -322,6 +325,9 @@ if has('autocmd')
 endif
 
 "##### auto-replace #####
+
+" current time
+iab <expr> dt strftime("%d %b %Y %H:%M:%S")
 
 " days of week
 iab monday     Monday
