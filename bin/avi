@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+import sys
+import os
+import glob
+import subprocess
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: %s pattern [pattern ...]" % os.path.split(sys.argv[0])[1])
+        sys.exit(0)
+
+    for arg in sys.argv[1:]:
+        files = glob.glob(arg)
+
+        if len(files) == 0:
+            continue
+
+        for file in files:
+            name = os.path.splitext(os.path.split(file)[1])[0]
+            try:
+                # convert file to avi
+                subprocess.check_call(["mencoder", file, "-o", name + ".avi", "-ovc", "lavc", "-lavcopts", "vcodec=mjpeg:vhq:vbitrate=1800", "-oac", "mp3lame"])
+
+            except Exception as e:
+                print(e)
