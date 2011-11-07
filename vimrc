@@ -46,6 +46,7 @@ set splitbelow
 if has('mouse')
 	set mouse=a
 endif
+set viminfo^=%
 
 "##### appearance #####
 
