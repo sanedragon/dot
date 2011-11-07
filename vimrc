@@ -131,6 +131,9 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 
 "##### keyboard mappings #####
 
+" NERDTreeToggle
+noremap <leader>t :NERDTreeToggle<CR>
+
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -152,7 +155,7 @@ map <leader>ca :!~/usealiases<CR>
 map <leader>b :BufExplorer<cr>
 
 " ack
-"nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack
 
 " convenient mappings (TODO: what about insert mode?)
 noremap <C-a> ggVG
@@ -187,7 +190,7 @@ nnoremap <F5> "=strftime("%d %b %Y %H:%M:%S")<CR>P
 inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
 
 " highlight cursor's current column
-map <F6>  :set cursorcolumn!<CR>
+map <F6> :set cursorcolumn!<CR>
 
 " replacing (local, global)
 nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
