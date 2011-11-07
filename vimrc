@@ -176,6 +176,9 @@ nmap <C-k> <C-u>
 " highlight search matches
 nmap <F3> :set hls!<CR>
 
+" clear old search
+nnoremap <CR> :let @/ = ""<CR><CR>
+
 " display unprintable characters
 nnoremap <F2> :set list!<CR>
 
@@ -191,10 +194,10 @@ nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " folding (if enabled)
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+inoremap <F7> <C-O>za
+nnoremap <F7> za
+onoremap <F7> <C-C>za
+vnoremap <F7> zf
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
 vnoremap <Space> zf
 
@@ -248,7 +251,7 @@ function! IndTxtObj(inner)
 endfunction
 
 " git blame
-vmap <leader>gb :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <leader>bl :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Remap TAB to keyword completion
 function! InsertTabWrapper(direction)
