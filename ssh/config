@@ -1,10 +1,3 @@
-User			estrickland
-TcpKeepAlive	yes
-ForwardX11		yes
-ForwardAgent	yes
-IdentitiesOnly	yes
-IdentityFile	~/.ssh/id_rsa
-
 # EC2 tunnel
 Host hypodermia.me
 	Hostname		hypodermia.me
