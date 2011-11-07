@@ -282,6 +282,7 @@ export RENTASK_USER=estrickland
 export RENTRAK_EMAIL=estrickland@rentrakmail.com
 #export CVSWORK=/home/estrickland/work/ondemand/perl_lib
 #ssh-agent $SHELL
+export PERL5LIB=/usr/local/vod/perl_lib
 
 cdtr()
 {
