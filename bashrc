@@ -121,7 +121,7 @@ function extract()      # Handy Extract Program.
 }
 
 # useful odds and ends
-calc() { bc <<< "scale=4; $1"; } # quick bc frontend with 4 decimal precision
+calc() { bc <<< "scale=4; $@"; } # quick bc frontend with 4 decimal precision
 title() { echo -ne "\e];$1\007"; } # change terminal/tab title
 manopt() { man $1 | sed -n "/^\s\+-\+$2\b/,/^\s*$/p"|sed '$d;'; } # Func to only show part of man page for specified option. Ex: manopt rm I
 
@@ -282,6 +282,7 @@ export RENTASK_USER=estrickland
 export RENTRAK_EMAIL=estrickland@rentrakmail.com
 #export CVSWORK=/home/estrickland/work/ondemand/perl_lib
 #ssh-agent $SHELL
+export PERL5LIB=/usr/local/vod/perl_lib
 
 cdtr()
 {
