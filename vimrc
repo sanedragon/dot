@@ -30,7 +30,7 @@ set magic
 set showmode
 set showcmd
 set showmatch
-set matchtime=2
+set matchtime=5
 set history=100
 set notitle
 set ttyfast
