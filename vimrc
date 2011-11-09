@@ -30,7 +30,7 @@ set magic
 set showmode
 set showcmd
 set showmatch
-set matchtime=2
+set matchtime=5
 set history=100
 set notitle
 set ttyfast
@@ -46,6 +46,7 @@ set splitbelow
 if has('mouse')
 	set mouse=a
 endif
+set viminfo^=%
 
 "##### appearance #####
 
@@ -130,6 +131,9 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 
 "##### keyboard mappings #####
 
+" NERDTreeToggle
+noremap <leader>t :NERDTreeToggle<CR>
+
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -151,7 +155,7 @@ map <leader>ca :!~/usealiases<CR>
 map <leader>b :BufExplorer<cr>
 
 " ack
-"nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack
 
 " convenient mappings (TODO: what about insert mode?)
 noremap <C-a> ggVG
@@ -175,6 +179,9 @@ nmap <C-k> <C-u>
 " highlight search matches
 nmap <F3> :set hls!<CR>
 
+" clear old search
+nnoremap <CR> :let @/ = ""<CR><CR>
+
 " display unprintable characters
 nnoremap <F2> :set list!<CR>
 
@@ -183,17 +190,17 @@ nnoremap <F5> "=strftime("%d %b %Y %H:%M:%S")<CR>P
 inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
 
 " highlight cursor's current column
-map <F6>  :set cursorcolumn!<CR>
+map <F6> :set cursorcolumn!<CR>
 
 " replacing (local, global)
 nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " folding (if enabled)
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+inoremap <F7> <C-O>za
+nnoremap <F7> za
+onoremap <F7> <C-C>za
+vnoremap <F7> zf
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
 vnoremap <Space> zf
 
@@ -247,7 +254,7 @@ function! IndTxtObj(inner)
 endfunction
 
 " git blame
-vmap <leader>gb :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <leader>bl :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Remap TAB to keyword completion
 function! InsertTabWrapper(direction)
