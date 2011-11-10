@@ -47,6 +47,7 @@ if has('mouse')
 	set mouse=a
 endif
 set viminfo^=%
+filetype plugin indent on
 
 "##### appearance #####
 
@@ -84,26 +85,6 @@ filetype indent on
 set foldenable
 set foldmethod=syntax
 set foldlevel=100 " Don't autofold anything
-
-"##### perl #####
-
-let g:perl_compiler_force_warnings = 0
-
-let perl_moose_stuff               = 1
-let perl_no_scope_in_variables     = 1
-let perl_no_sync_on_sub            = 1
-let perl_no_sync_on_global_var     = 1
-let perl_extended_vars             = 1
-let perl_include_pod               = 1
-let perl_string_as_statement       = 1
-let perl_sync_dist                 = 1000
-let perl_want_scope_in_variables   = 1
-let perl_pod_formatting            = 1
-let perl_pod_spellcheck_headings   = 1
-let perl_fold                      = 1
-let perl_fold_blocks               = 1
-let perl_nofold_packages           = 1
-let perlhelp_prog                  = '/usr/bin/perldoc'
 
 "##### searching #####
 
@@ -276,7 +257,6 @@ inoremap <c-tab> <c-r>=InsertTabWrapper("startkey")<CR>
 "##### autocommands #####
 
 if has('autocmd')
-
 	" settings immediately take effect
 	augroup vimrc
 		au!
@@ -301,34 +281,6 @@ if has('autocmd')
 					\   exe "normal! g'\"" |
 					\ endif	
 	augroup END
-
-	" enabled file type detection and file-type specific plugins.
-	filetype plugin on
-
-	" PEP8
-	augroup python
-		au!
-		au BufReadPre,FileReadPre		*.py set tabstop=4
-		au BufReadPre,FileReadPre		*.py set expandtab
-		au BufReadPre,FileReadPre		*.py set tw=0
-	augroup END
-
-	" Perl (and extra things)
-    augroup perl
-        au!
-        au FileType pl,pm,t set filetype=perl
-        au FileType perl noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
-        au FileType perl set makeprg=perl\ -c\ %\ $*
-        au FileType perl set errorformat=%f:%l:%m
-        au FileType perl set keywordprg=perldoc\ -f
-        au FileType perl set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
-        au FileType perl set formatoptions=qro
-        au FileType perl set tabstop=4
-        au FileType perl set expandtab
-        au FileType perl set tw=0
-        au BufWritePre,FileWritePre *.pm,*.pl,*.t :%s/\s\+$//e
-    augroup END
-
 endif
 
 "##### auto-replace #####
