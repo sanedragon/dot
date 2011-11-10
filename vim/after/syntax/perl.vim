@@ -19,12 +19,12 @@ let perl_nofold_packages           = 1
 let perlhelp_prog                  = '/usr/bin/perldoc'
 
 noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
-set makeprg=perl\ -c\ %\ $*
-set errorformat=%f:%l:%m
-set keywordprg=perldoc\ -f
-set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
-set formatoptions=qro
-set tabstop=4
-set expandtab
-set tw=0
+setlocal makeprg=perl\ -c\ %\ $*
+setlocal errorformat=%f:%l:%m
+setlocal keywordprg=perldoc\ -f
+setlocal formatprg=perl\ -MText::Autoformat\ -e'autoformat'
+setlocal formatoptions=qro
+setlocal tabstop=4
+setlocal expandtab
+setlocal tw=0
 
