@@ -2,6 +2,7 @@
 
 set nocompatible
 set encoding=utf-8
+call pathogen#infect()
 set number
 if exists('+relativenumber')
 	set relativenumber
@@ -114,6 +115,9 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 
 " NERDTreeToggle
 noremap <leader>t :NERDTreeToggle<CR>
+
+" gundo
+nnoremap <F4> :GundoToggle<CR>
 
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
