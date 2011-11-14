@@ -64,6 +64,10 @@ let loaded_matchparen = 0
 set cursorline
 "set cursorcolumn
 
+"##### gvim #####
+set guioptions-=T
+set gfn=Droid\ Sans\ Mono\ 11
+
 "##### whitespace #####
 
 set nowrap
@@ -110,7 +114,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.py
 
 set laststatus=2
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
-
 "##### keyboard mappings #####
 
 " NERDTreeToggle
