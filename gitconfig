@@ -21,6 +21,7 @@
     renameLimit = 0
     renames = copy
     color = auto
+	tool = vimdiff
 [rerere]
     enabled = true
 [merge]
@@ -44,6 +45,7 @@
     review = "log --stat=160,180 -p -w --patience --reverse -M -C -C -c"
     upm = !sh -c 'git fetch --all && git rebase origin/master && git submodule update' -
     plog = !git lg
+	d = difftool
 [push]
     default = current
 [status]
@@ -57,3 +59,5 @@
 [commit]
     template = ~/.gitcommittemplate
 
+[difftool]
+	prompt = false
