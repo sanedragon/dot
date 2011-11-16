@@ -1,0 +1,9 @@
+# Write your default config options here!
+
+subpos="95"	#By default subtitles are too low
+subalign="2"
+
+#turns off xscreen saver...maybe
+stop-xscreensaver="yes"
+
+
