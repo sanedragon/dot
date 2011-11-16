@@ -1,9 +1,13 @@
 # Write your default config options here!
 
-subpos="95"	#By default subtitles are too low
+sid="0"
+double="yes"
+ffactor="10"
+subfont-text-scale="3"
+subfont-outline="4"
+autoq=100
+subpos="95"
 subalign="2"
-
-#turns off xscreen saver...maybe
 stop-xscreensaver="yes"
-
+font="Helvetica"
 
