@@ -1,6 +1,6 @@
-# aliases
-if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+
+if [ -f $HOME/.aliases ]; then
+	. $HOME/.aliases
 fi
 
 # If not running interactively, don't do anything
@@ -22,11 +22,6 @@ export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d ~/bin ] ; then
-	export PATH=~/bin:"${PATH}"
 fi
 
 if [ -d ~/.local/bin ] ; then
@@ -273,53 +268,5 @@ function gup
 	fi
 
   )
-}
-
-# rentrak
-export SERVER_PORT=8080
-export RTK_SUBSYSTEM=vod
-export EDITOR=vim
-export RENTASK_USER=estrickland
-export RENTRAK_EMAIL=estrickland@rentrakmail.com
-#export CVSWORK=/home/estrickland/work/ondemand/perl_lib
-#ssh-agent $SHELL
-export PERL5LIB=/usr/local/vod/perl_lib
-
-cdtr()
-{
-	pattern=$1
-	WORKDIR=$HOME/work
-
-	if [[ -n "$pattern" ]]; then
-		if [[ -d "$WORKDIR/$pattern" ]]; then
-			work_dir="$WORKDIR/$pattern"
-			title $pattern
-			cd $work_dir
-			export CVSWORK=`pwd`/perl_lib
-			export PERL5LIB=`pwd`/perl_lib:$PERL5LIB
-			export DOCUMENT_ROOT=`pwd`/web_src/vod/htdocs
-			if [[ $work_dir =~ "([0-9]{6})" ]]; then
-				task=${BASH_REMATCH[1]}
-				rentask_clock.pl in $task
-			fi
-		else
-			for dir in `find $WORKDIR -follow -maxdepth 1 -type d`; do
-				branch_name=$(basename "$dir")
-				if [[ $branch_name =~ ".*$pattern.*" ]]; then
-					work_dir="$WORKDIR/$branch_name"
-					title $branch_name
-					cd $work_dir
-					export CVSWORK=`pwd`/perl_lib
-					export PERL5LIB=`pwd`/perl_lib:$PERL5LIB
-					export DOCUMENT_ROOT=`pwd`/web_src/vod/htdocs
-					if [[ $work_dir =~ "([0-9]{6})" ]]; then
-						task=${BASH_REMATCH[1]}
-						rentask_clock.pl in $task
-					fi
-					break
-				fi
-			done
-		fi
-	fi
 }
 
