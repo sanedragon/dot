@@ -21,18 +21,3 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-## RTK
-if $(hostname | grep -q dev) ; then
-  workdir=/data_storage/work/$(whoami)
-  if [ ! -d $workdir ]; then
-  	mkdir $workdir
-  fi
-
-  if [ ! -h ~/work ]; then
-	ln  -s $workdir ~/work
-  fi
-  if [ -f ~/.cvswork ]; then
-	chmod 777 ~/.cvswork
-  fi
-fi
-
