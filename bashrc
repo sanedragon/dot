@@ -1,61 +1,63 @@
+# Bring in aliases
 
-if [ -f $HOME/.aliases ]; then
+if [ -f $HOME/.aliases ] ; then
 	. $HOME/.aliases
 fi
 
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+# Enable programmable completion features
 
-# some shell options
-shopt -s checkwinsize	# update window size
-shopt -s expand_aliases # aliases in scripts
-
-# make less more friendly for non-text input files, see lesspipe(1)
-alias more='less'
-export PAGER=less
-export LESSCHARSET='utf-8'
-export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
-#export LESS='-i -N -w  -z-4 -g -e -M -X -F -R -P%t?f%f \
-#:stdin .?pb%pb\%:?lbLine %lb:?bbByte %bb:-...'
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# enable programmable completion features
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+if [ -f /etc/bash_completion ] && ! shopt -oq posix ; then
 	. /etc/bash_completion
 fi
 
-if [ -d ~/.local/bin ] ; then
+# Paths
+
+if [ -d $HOME/.local/bin ] ; then
 	export PATH=~/.local/bin:"${PATH}"
 fi
-
-if [ -d ~/.bin ] ; then
+if [ -d $HOME/bin ] ; then
+	export PATH=~/bin:"${PATH}"
+fi
+if [ -d $HOME/.bin ] ; then
 	export PATH=~/.bin:"${PATH}"
 fi
 
-# settings
+# Settings
+
+export LANGUAGE="en"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
 export TERM="xterm-color"
 export TZ="America/Los_Angeles"
+shopt -s checkwinsize		# update window size
+shopt -s expand_aliases		# aliases in scripts
+export PAGER=less
+export LESSCHARSET='utf-8'
+export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+umask 022
+ssh-add &> /dev/null
 
-# prompt
-source git-completion.sh
+# Prompt
+
+. git-completion.sh
+. bash-colors.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM='auto'
-
-source bash-colors.sh
 export PS1="${BBlue}\h:${Color_Off}${BGreen}\w${Color_Off} \$(__git_ps1 \"${BPurple}(%s)${Color_Off}\")\n${BIYellow}⚡${Color_Off} "
-#export PS1="${BGreen}\W${Color_Off}\$(__git_ps1 \" ${BPurple}(%s)${Color_Off}\") ${BIYellow}⚡${Color_Off} "
-#export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ 'i
-#export PS1="\W$(__git_ps1 "(%s)") ⚡ " # no colors
 
-# history
+# History
 shopt -s histappend
 export HISTFILESIZE=5000000
 export HISTSIZE=5000
 export HISTIGNORE='l:ls:la:ll:cd'
 export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
 export HISTCONTROL=ignoredups:ignorespace
+
+# Helper functions
 
 # Find a file with a pattern in name:
 function ff() { find . -type f -iname '*'$*'*' -ls ; }
