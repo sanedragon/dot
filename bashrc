@@ -1,26 +1,18 @@
 # Bring in aliases
 
-if [ -f $HOME/.aliases ] ; then
-	. $HOME/.aliases
-fi
+[ -f $HOME/.aliases ] && source $HOME/.aliases
 
 # Enable programmable completion features
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix ; then
-	. /etc/bash_completion
+	source /etc/bash_completion
 fi
 
 # Paths
 
-if [ -d $HOME/.local/bin ] ; then
-	export PATH=~/.local/bin:"${PATH}"
-fi
-if [ -d $HOME/bin ] ; then
-	export PATH=~/bin:"${PATH}"
-fi
-if [ -d $HOME/.bin ] ; then
-	export PATH=~/.bin:"${PATH}"
-fi
+[ -d $HOME/.local/bin ] && export PATH=~/.local/bin:"${PATH}"
+[ -d $HOME/bin ] && export PATH=~/bin:"${PATH}"
+[ -d $HOME/.bin ] && export PATH=~/.bin:"${PATH}"
 
 # Settings
 
