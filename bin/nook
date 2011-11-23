@@ -16,18 +16,18 @@ This script just finds all the e-reader compatible files from one or more
 directories and copies them to one or more other directories. By default,
 e-reader compatible files means EPUB files with the extension '.epub'.
 
-    --help
+    -h|--help
         Display this message and exit.
 
-    --sources <directory[, directory ...]>
+    -s|--source <directory[,directory ...]>
         Directories to search for files. Default is to search
         '/home/emily/Downloads'.
 
-    --destinations <directory[, directory ...]>
+    -d|--destination <directory[,directory ...]>
         Directories into which to copy the files. Default is to copy into
         '/media/FC30-3DA9/My\ Files/Books/'.
 
-    --extensions <extension[, extension]>
+    -e|--extension <extension[,extension]>
         File extensions to search for, without leading patterns or dots. For
         example: 'pdf'. Default is 'epub'.
 USAGE
