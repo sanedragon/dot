@@ -1,10 +1,15 @@
 #!/usr/bin/perl -w
 use strict;
 
+use File::Copy qw/ copy /;
 use File::Find;
-use File::Copy;
+use File::Spec;
 use Getopt::Long;
 use List::MoreUtils qw/ uniq /;
+
+my @sources = ( '/home/emily/Downloads' );
+my @destinations = ( '/media/FC30-3DA9/My\ Files/Books/' );
+my @extensions = ( 'epub' );
 
 my $USAGE = <<USAGE;
 This script just finds all the e-reader compatible files from one or more
@@ -26,9 +31,7 @@ e-reader compatible files means EPUB files with the extension '.epub'.
         File extensions to search for, without leading patterns or dots. For
         example: 'pdf'. Default is 'epub'.
 USAGE
-my @sources = ( '/home/emily/Downloads' );
-my @destinations = ( '/media/FC30-3DA9/My\ Files/Books/' );
-my @extensions = ( 'epub' );
+
 my $help;
 
 GetOptions(
@@ -59,9 +62,9 @@ File::Find::find
                     for my $dest (@destinations)
                     {
                         my $old = $File::Find::name;
-                        my $new = $dest . $_;
+                        my $new = File::Spec->catfile($dest, $_);
                         print "Copying '$_' => '$dest'\n";
-                        copy($old, $new) unless ( -e $new);
+                        copy($old, $new) unless ( -e $new) or die "$!";
                     }
                 }
             }
