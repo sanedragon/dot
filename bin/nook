@@ -1,0 +1,74 @@
+#!/usr/bin/perl -w
+use strict;
+
+use File::Find;
+use File::Copy;
+use Getopt::Long;
+use List::MoreUtils qw/ uniq /;
+
+my $USAGE = <<USAGE;
+This script just finds all the e-reader compatible files from one or more
+directories and copies them to one or more other directories. By default,
+e-reader compatible files means EPUB files with the extension '.epub'.
+
+    --help
+        Display this message and exit.
+
+    --sources <directory[, directory ...]>
+        Directories to search for files. Default is to search
+        '/home/emily/Downloads'.
+
+    --destinations <directory[, directory ...]>
+        Directories into which to copy the files. Default is to copy into
+        '/media/FC30-3DA9/My\ Files/Books/'.
+
+    --extensions <extension[, extension]>
+        File extensions to search for, without leading patterns or dots. For
+        example: 'pdf'. Default is 'epub'.
+USAGE
+my @sources = ( '/home/emily/Downloads' );
+my @destinations = ( '/media/FC30-3DA9/My\ Files/Books/' );
+my @extensions = ( 'epub' );
+my $help;
+
+GetOptions(
+    'source=s'      => \@sources,
+    'destination=s' => \@destinations,
+    'extensions=s'  => \@extensions,
+    'help'          => \$help,
+);
+
+if ($help) {
+    print $USAGE;
+    return;
+}
+
+@sources = uniq(sort(split(/,/,join(',', @sources))));
+@destinations = uniq(sort(split(/,/,join(',', @destinations))));
+@extensions = uniq(sort(split(/,/,join(',', @extensions))));
+
+File::Find::find
+(
+    {
+        wanted => sub
+        {
+            for my $ext (@extensions)
+            {
+                if (/^.*\.$ext\z/si)
+                {
+                    for my $dest (@destinations)
+                    {
+                        my $old = $File::Find::name;
+                        my $new = $dest . $_;
+                        print "Copying '$_' => '$dest'\n";
+                        copy($old, $new) unless ( -e $new);
+                    }
+                }
+            }
+        },
+        follow => 1,
+    },
+    @sources
+);
+
+
