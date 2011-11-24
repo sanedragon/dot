@@ -32,19 +32,17 @@ e-reader compatible files means EPUB files with the extension '.epub'.
         example: 'pdf'. Default is 'epub'.
 USAGE
 
-my $help;
+my $help
 
-GetOptions(
+GetOptions
+(
     'source=s'      => \@sources,
     'destination=s' => \@destinations,
     'extensions=s'  => \@extensions,
     'help'          => \$help,
 );
 
-if ($help) {
-    print $USAGE;
-    return;
-}
+if ($help) { print $USAGE; return; }
 
 @sources = uniq(sort(split(/,/,join(',', @sources))));
 @destinations = uniq(sort(split(/,/,join(',', @destinations))));
