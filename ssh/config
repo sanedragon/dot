@@ -1,4 +1,8 @@
+KeepAlive yes
+ServerAliveInterval 60
+
 # EC2 tunnel
+
 Host hypodermia.me
 	Hostname		hypodermia.me
 	User			hypodermia
@@ -40,4 +44,12 @@ Host rlogin1.remote
 	IdentitiesOnly	yes
 	IdentityFile	~/.ssh/id_rsa
 
+# Rentrak local
+Host *
+	User			estrickland
+	TcpKeepAlive	yes
+	ForwardX11		yes
+	ForwardAgent	yes
+	IdentitiesOnly	yes
+	IdentityFile	~/.ssh/id_rsa
 
