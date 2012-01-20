@@ -1,8 +1,4 @@
-KeepAlive yes
-ServerAliveInterval 60
-
 # EC2 tunnel
-
 Host hypodermia.me
 	Hostname		hypodermia.me
 	User			hypodermia
@@ -35,6 +31,17 @@ Host voddev1.remote
 	ProxyCommand	ssh rlogin1.remote nc %h %p
 	DynamicForward	9000
 
+Host vodliveprocmaster1.remote
+	TcpKeepAlive	yes
+	User			estrickland
+	Hostname		vodliveprocmaster1.vw.rentrak.com
+	ForwardX11		yes
+	ForwardAgent	yes
+	IdentitiesOnly	yes
+	IdentityFile	~/.ssh/id_rsa
+	ProxyCommand	ssh rlogin2.remote nc %h %p
+	DynamicForward	9000
+
 Host rlogin1.remote
 	TcpKeepAlive	yes
 	User			estrickland
@@ -44,12 +51,13 @@ Host rlogin1.remote
 	IdentitiesOnly	yes
 	IdentityFile	~/.ssh/id_rsa
 
-# Rentrak local
-Host *
-	User			estrickland
+Host rlogin2.remote
 	TcpKeepAlive	yes
+	User			estrickland
+	Hostname		rlogin2.rentrak.com
 	ForwardX11		yes
 	ForwardAgent	yes
 	IdentitiesOnly	yes
 	IdentityFile	~/.ssh/id_rsa
+
 
