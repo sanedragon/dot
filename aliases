@@ -2,6 +2,8 @@
 alias rm='rm -i'
 alias alert="echo -e '\a'"
 alias grrl='man'
+alias dt='date +%Y%m%d%H%M%S'
+alias rsync='rsync -avz --progress --stats'
 
 if [[ -e '/usr/bin/ack-grep' ]]; then alias ack='/usr/bin/ack-grep'; fi
 if [[ -e '/usr/bin/htop' ]]; then alias top='/usr/bin/htop'; fi
@@ -15,8 +17,8 @@ then
   alias ls="ls --color=auto --classify --block-size=\'1"
 fi
 alias lh='ls -Ad .*'
-alias l='ls -alFht'
-alias ll='ls -alF'
+alias l='ls -AlFht'
+alias ll='ls -AlF'
 alias la='ls -A'
 
 # git aliases
@@ -75,7 +77,8 @@ alias promo_dev='psql promo_dev  -h mcdevdb1 -U promo -p 5433'
 #alias promo_dev='psql -h voddb7 -p 5432 -U estrickland promo_dev'
 
 # VOD databases
-alias vod_live='psql -h vodlivedb1.vw -p 5432 -U estrickland vod_live_full'
+alias vod_live='psql -h vodlivedb2 -p 5432 -U estrickland vod_live'
+alias vod_live_old='psql -h vodlivedb2 -p 5433 -U estrickland vod_live_old'
 alias vod_dev='psql -h thumper3.vw -p 5432 -U estrickland vod_dev'
 alias vod_dev_write='psql -h thumper3.vw -p 5432 -U vod vod_dev'
 alias vod_replica='psql -h thumper2.vw -p 5432 -U estrickland vod_live_replica1'
@@ -83,7 +86,7 @@ alias vod_test='psql -h voddb7.vw -p 5440 -U vod vod_test1'
 
 # MC databases
 alias mc_live='psql -h mcdb1 -p 5432 -U estrickland mc_live'
-alias mc_dev='psql -h mcdevdb1 -p 5432 -U mc mc_dev'
+alias mc_dev='psql -h mcdevdb1 -p 5432 -U estrickland mc_dev'
 
 # ITV databases
 alias itv_live='psql -h mobiledb2.vw -p 5432 -U estrickland onlinevideo_live'
