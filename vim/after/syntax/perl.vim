@@ -13,18 +13,50 @@ let perl_sync_dist                 = 1000
 let perl_want_scope_in_variables   = 1
 let perl_pod_formatting            = 1
 let perl_pod_spellcheck_headings   = 1
-let perl_fold                      = 1
-let perl_fold_blocks               = 1
-let perl_nofold_packages           = 1
+"let perl_fold                      = 1
+"let perl_fold_blocks               = 1
+"let perl_nofold_packages           = 1
 let perlhelp_prog                  = '/usr/bin/perldoc'
 
 noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
-setlocal makeprg=perl\ -c\ %\ $*
-setlocal errorformat=%f:%l:%m
-setlocal keywordprg=perldoc\ -f
-setlocal formatprg=perl\ -MText::Autoformat\ -e'autoformat'
-setlocal formatoptions=qro
-setlocal tabstop=4
-setlocal expandtab
-setlocal tw=0
+set makeprg=perl\ -c\ %\ $*
+set errorformat=%f:%l:%m
+set keywordprg=perldoc\ -f
+set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
+set formatoptions=qro
+set tabstop=4
+set expandtab
+set tw=0
 
+if !has('conceal')
+	    finish
+endif
+
+syntax match perlLambda +\(=>\?\s*\)\@<=sub\(\W\)\@=+ conceal cchar=λ
+
+syntax clear perlOperator
+syntax keyword perlOperator is
+
+syntax match perlNiceOperator "\<in\>"      conceal cchar=∈
+syntax match perlNiceOperator "\<or\>"      conceal cchar=∨
+syntax match perlNiceOperator "\<and\>"     conceal cchar=∧
+syntax match perlNiceOperator "\<not "      conceal cchar=¬
+syntax match perlNiceOperator "\<foreach\>" conceal cchar=∀
+syntax match perlNiceOperator "\<exists\>"  conceal cchar=∃
+syntax match perlNiceOperator "\<warn\>"    conceal cchar=⚠
+syntax match perlNiceOperator "\<die\>"     conceal cchar=☠
+syntax match perlNiceOperator "<="          conceal cchar=≤
+syntax match perlNiceOperator ">="          conceal cchar=≥
+syntax match perlNiceOperator "=="          conceal cchar=≡
+syntax match perlNiceOperator "!="          conceal cchar=≠
+syntax match perlNiceOperator "=\~"         conceal cchar=≅
+syntax match perlNiceOperator "!\~"         conceal cchar=≆
+syntax match perlNiceOperator "\->"         conceal cchar=▸
+syntax match perlNiceOperator "=>"          conceal cchar=⇒
+
+hi  link perlNiceOperator  Operator
+hi  link perlNiceStatement Statement
+hi! link Conceal           Operator
+
+setl conceallevel=2
+setl concealcursor=n
