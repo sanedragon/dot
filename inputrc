@@ -1,0 +1,18 @@
+#set convert-meta on
+#set editing-mode vi
+#set keymap vi-insert
+#"\C-l":		clear-screen # CTRL-L
+#"\e[2~":	quoted-insert # Insert
+#"\e[3~":	vi-delete # Delete
+#"\e[5~":	beginning-of-history # PageUp
+#"\e[6~":	end-of-history # PageDown
+#
+## ^p check for partial match in history
+#bind -m vi-insert "\C-p":dynamic-complete-history
+## ^n cycle through the list of partial matches
+#bind -m vi-insert "\C-n":menu-complete
+#
+#set keymap vi-command
+#"\e[2~":	quoted-insert # Insert
+#"\e[5~":	beginning-of-history # PageUp
+#"\e[6~":	end-of-history # PageDown
