@@ -67,7 +67,7 @@ let loaded_matchparen = 0
 set cursorline
 "set cursorcolumn
 "let g:Powerline_symbols = 'fancy'
-set fillchars+=stl:\ ,stlnc:\
+set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
 
 "##### whitespace #####
 
