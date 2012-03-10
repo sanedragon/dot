@@ -3,8 +3,8 @@ alias rm='rm -i'
 alias alert="echo -e '\a'"
 alias grrl='man'
 alias dt='date +%Y%m%d%H%M%S'
-alias rsync='rsync -avz --progress --stats'
-
+alias move='rsync -avz --progress --stats'
+alias less='less --follow-name -S'
 if [[ -e '/usr/bin/ack-grep' ]]; then alias ack='/usr/bin/ack-grep'; fi
 if [[ -e '/usr/bin/htop' ]]; then alias top='/usr/bin/htop'; fi
 

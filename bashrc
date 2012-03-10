@@ -20,16 +20,20 @@ export LANGUAGE="en"
 export LC_MESSAGES="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
-export TERM="xterm-256color"
+export TERM="xterm-color"
 export TZ="America/Los_Angeles"
 shopt -s checkwinsize		# update window size
 shopt -s expand_aliases		# aliases in scripts
-export PAGER=less
+export PAGER='less -S'
 export LESSCHARSET='utf-8'
 export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-umask 022
+umask 002
 ssh-add &> /dev/null
+if [ -d /digi/vod/VOD_TMP ] ; then
+	export TMPDIR=/digi/vod/VOD_TMP
+fi
+export RTK_POST_TEST_HOOK=/home/estrickland/work/game/game.pl
 
 # Prompt
 
