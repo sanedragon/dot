@@ -2,15 +2,14 @@
 
 set nocompatible
 set encoding=utf-8
-call pathogen#infect()
 set number
-if exists('+relativenumber')
-	set relativenumber
-endif
+"if exists('+relativenumber')
+"	set relativenumber
+"endif
 if has('unnamedplus')
 	set clipboard=unnamedplus
 endif
-"set numberwidth=4
+set numberwidth=4
 set ruler
 if has('persistent_undo')
 	set undodir=~/.vim/local/undo/
@@ -46,9 +45,13 @@ set backspace=indent,eol,start
 set splitbelow
 if has('mouse')
 	set mouse=a
+	set mousemodel=popup_setpos
 endif
 set viminfo^=%
 filetype plugin indent on
+set ofu=syntaxcomplete#Complete
+"set spell
+"set spelllang=en_us
 
 "##### appearance #####
 
@@ -63,10 +66,8 @@ syntax on
 let loaded_matchparen = 0
 set cursorline
 "set cursorcolumn
-
-"##### gvim #####
-set guioptions-=T
-set gfn=Droid\ Sans\ Mono\ 11
+"let g:Powerline_symbols = 'fancy'
+set fillchars+=stl:\ ,stlnc:\
 
 "##### whitespace #####
 
@@ -75,7 +76,7 @@ set whichwrap+=<>[]
 set textwidth=80
 "set formatoptions=tcqron1
 "set lbr
-set showbreak=→
+"set showbreak=→
 set smartindent
 set tabstop=4
 set shiftwidth=4
@@ -83,13 +84,17 @@ set softtabstop=4
 "set expandtab
 set list listchars=tab:▸\ ,trail:·",eol:¬
 filetype indent on
-
+set virtualedit=onemore
 
 "##### folding #####
 
 set foldenable
-set foldmethod=syntax
+set foldmethod=manual
 set foldlevel=100 " Don't autofold anything
+"augroup vimrc
+"    au BufReadPre * setlocal foldmethod=syntax
+"    au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+"augroup END
 
 "##### searching #####
 
@@ -114,13 +119,11 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.py
 
 set laststatus=2
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
+
 "##### keyboard mappings #####
 
 " NERDTreeToggle
 noremap <leader>t :NERDTreeToggle<CR>
-
-" gundo
-nnoremap <F4> :GundoToggle<CR>
 
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -146,7 +149,7 @@ map <leader>b :BufExplorer<cr>
 nnoremap <leader>a :Ack
 
 " convenient mappings (TODO: what about insert mode?)
-noremap <C-a> ggVG
+"noremap <C-a> ggVG
 "nnoremap <C-x> "+d
 "noremap <C-c> "+y<CR>
 "noremap <C-v> "+p<CR>
@@ -156,7 +159,7 @@ nmap <C-n> :bn<CR>
 nmap <C-p> :bp<CR>
 
 " easier split window
-nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader>w <C-w>s<C-w>k
 
 " scroll shortcuts
 nmap <C-h> zH
@@ -168,7 +171,7 @@ nmap <C-k> <C-u>
 nmap <F3> :set hls!<CR>
 
 " clear old search
-nnoremap <CR> :let @/ = ""<CR><CR>
+nnoremap <leader>/ :let @/ = ""<CR>
 
 " display unprintable characters
 nnoremap <F2> :set list!<CR>
@@ -181,8 +184,17 @@ inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
 map <F6> :set cursorcolumn!<CR>
 
 " replacing (local, global)
-nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
-nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+"nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
+"nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+function! Refactor()
+    call inputsave()
+    let @z=input("What do you want to rename '" . @z . "' to? ")
+    call inputrestore()
+endfunction
+
+" Locally (local to block) rename a variable
+nmap <Leader>rf "zyiw:call Refactor()<cr>mx:silent! norm gd<cr>[{V%:s/<C-R>//<c-r>z/g<cr>`x
 
 " folding (if enabled)
 inoremap <F7> <C-O>za
@@ -202,7 +214,6 @@ onoremap <silent>ai :<C-u>call IndTxtObj(0)<CR>
 onoremap <silent>ii :<C-u>call IndTxtObj(1)<CR>
 vnoremap <silent>ai :<C-u>call IndTxtObj(0)<CR><Esc>gv
 vnoremap <silent>ii :<C-u>call IndTxtObj(1)<CR><Esc>gv
-
 function! IndTxtObj(inner)
 	if &filetype == 'haml' || &filetype == 'sass' || &filetype == 'python'
 		let meaningful_indentation = 1
@@ -244,6 +255,9 @@ endfunction
 " git blame
 vmap <leader>bl :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
+inoremap <tab> <c-r>=InsertTabWrapper("forward")<CR>
+inoremap <s-tab> <c-r>=InsertTabWrapper("backward")<CR>
+inoremap <c-tab> <c-r>=InsertTabWrapper("startkey")<CR>
 " Remap TAB to keyword completion
 function! InsertTabWrapper(direction)
 	let col = col('.') - 1
@@ -257,11 +271,12 @@ function! InsertTabWrapper(direction)
 		return "\<c-x>\<c-k>"
 	endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper("forward")<CR>
-inoremap <s-tab> <c-r>=InsertTabWrapper("backward")<CR>
-inoremap <c-tab> <c-r>=InsertTabWrapper("startkey")<CR>
 
-"##### autocommands #####
+" block select with right-click-and-drag
+noremap <RightMouse> <LeftMouse><Esc><C-V>
+noremap <RightDrag> <LeftDrag>
+
+"##### auto commands #####
 
 if has('autocmd')
 	" settings immediately take effect
@@ -310,3 +325,5 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
 	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
 endif
 
+" keep at bottom
+call pathogen#infect()
