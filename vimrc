@@ -286,6 +286,11 @@ if has('autocmd')
 		au BufLeave ~/.vimrc :source ~/.vimrc
 	augroup END
 
+    augroup redraw
+        au!
+        au VimResized * redraw!
+    augroup END
+
 	augroup focus
 		au!
 		au FocusLost * :wa
@@ -327,3 +332,5 @@ endif
 
 " keep at bottom
 call pathogen#infect()
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
