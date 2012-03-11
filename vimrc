@@ -331,6 +331,6 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
 endif
 
 " keep at bottom
-call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+
