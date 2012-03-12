@@ -128,7 +128,7 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 "##### keyboard mappings #####
 
 " NERDTreeToggle
-noremap <leader>t :NERDTreeToggle<CR>
+noremap <leader>n :NERDTreeToggle<CR>
 
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -303,23 +303,35 @@ if has('autocmd')
 
 	augroup dir
 		au!
-		autocmd BufEnter * cd %:p:h
+		au BufEnter * cd %:p:h
 	augroup END
 
 	augroup lastcursorpos
 		au!
-		autocmd BufReadPost *
-					\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-					\   exe "normal! g'\"" |
-					\ endif	
+		au BufReadPost *
+					\ if line("'\"") > 0 && line ("'\"") <= line("$")	|
+					\   exe "normal! g'\""								|
+					\ endif
+	augroup END
+
+	augroup nerdtree
+		au!
+		au BufEnter *
+					\ if exists("t:NERDTreeBufName")			|
+					\	if bufwinnr(t:NERDTreeBufName) != -1	|
+					\		if winnr("$") == 1					|
+					\			q								|
+					\		endif								|
+					\	endif									|
+					\ endif
 	augroup END
 endif
 
 "##### RTK-specific #####
 
-" if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
-" 	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
-" endif
+if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
+	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
+endif
 
 " keep at bottom
 call pathogen#runtime_append_all_bundles()
