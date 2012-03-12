@@ -310,25 +310,11 @@ if has('autocmd')
 	augroup END
 endif
 
-"##### auto-replace #####
-
-" current time
-iab <expr> dt strftime("%d %b %Y %H:%M:%S")
-
-" days of week
-iab monday     Monday
-iab tuesday    Tuesday
-iab wednesday  Wednesday
-iab thursday   Thursday
-iab friday     Friday
-iab saturday   Saturday
-iab sunday     Sunday
-
 "##### RTK-specific #####
 
-if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
-	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
-endif
+" if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
+" 	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
+" endif
 
 " keep at bottom
 call pathogen#runtime_append_all_bundles()
