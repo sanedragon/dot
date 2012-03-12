@@ -46,6 +46,11 @@ set splitbelow
 if has('mouse')
 	set mouse=a
 	set mousemodel=popup_setpos
+	map <F10> :set paste<CR>
+	map <F11> :set nopaste<CR>
+	imap <F10> <C-O>:set paste<CR>
+	imap <F11> <nop>
+	set pastetoggle=<F11>
 endif
 set viminfo^=%
 filetype plugin indent on
