@@ -20,7 +20,7 @@ export LANGUAGE="en"
 export LC_MESSAGES="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
-export TERM="xterm-color"
+export TERM="xterm-256color"
 export TZ="America/Los_Angeles"
 shopt -s checkwinsize		# update window size
 shopt -s expand_aliases		# aliases in scripts
