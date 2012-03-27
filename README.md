@@ -6,7 +6,7 @@ files with symlinks to the files here in an intelligent, interactive way.
 
 ## Deploy ##
 
-	git clone git@github.com:hypodermia/dot.git ~/.dot
+	git clone git@github.com:lilix/dot.git ~/.dot
 	cd ~/.dot
 	./deploy.py
 
