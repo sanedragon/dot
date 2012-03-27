@@ -181,6 +181,8 @@ nnoremap <leader>/ :let @/ = ""<CR>
 " display unprintable characters
 nnoremap <F2> :set list!<CR>
 
+nnoremap <F4> :set spell!<CR>
+
 " insert date
 nnoremap <F5> "=strftime("%d %b %Y %H:%M:%S")<CR>P
 inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>

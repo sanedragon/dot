@@ -4,7 +4,6 @@ alias alert="echo -e '\a'"
 alias grrl='man'
 alias dt='date +%Y%m%d%H%M%S'
 alias move='rsync -avz --progress --stats'
-alias less='less --follow-name -S'
 if [[ -e '/usr/bin/ack-grep' ]]; then alias ack='/usr/bin/ack-grep'; fi
 if [[ -e '/usr/bin/htop' ]]; then alias top='/usr/bin/htop'; fi
 
@@ -79,7 +78,7 @@ alias promo_dev='psql promo_dev  -h mcdevdb1 -U promo -p 5433'
 # VOD databases
 alias vod_live='psql -h vodlivedb2 -p 5432 -U estrickland vod_live'
 alias vod_dev='psql -h voddevdb2 -p 5432 -U estrickland vod_dev'
-alias vod_test='psql -h voddb7.vw -p 5440 -U vod vod_test1'
+alias vod_test='psql -h voddb1 -p 5440 -U vod vod_test1'
 
 # MC databases
 alias mc_live='psql -h mcdb1 -p 5432 -U estrickland mc_live'

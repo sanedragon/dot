@@ -24,16 +24,14 @@ export TERM="xterm-color"
 export TZ="America/Los_Angeles"
 shopt -s checkwinsize		# update window size
 shopt -s expand_aliases		# aliases in scripts
-export PAGER='less -S'
+export PAGER='less'
+export LESS='MQeicsnfS'
 export LESSCHARSET='utf-8'
 export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 umask 002
 ssh-add &> /dev/null
-if [ -d /digi/vod/VOD_TMP ] ; then
-	export TMPDIR=/digi/vod/VOD_TMP
-fi
-export RTK_POST_TEST_HOOK=/home/estrickland/work/game/game.pl
+[ -d /digi/vod/VOD_TMP ] && export TMPDIR=/digi/vod/VOD_TMP
 
 # Prompt
 
@@ -146,3 +144,4 @@ function cmds ()
 
 # helpful stuff for work
 . rtk-helpers.sh
+export RTK_POST_TEST_HOOK=/home/estrickland/work/game/game.pl
