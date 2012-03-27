@@ -1,3 +1,5 @@
+call pathogen#runtime_append_all_bundles()
+
 "##### general settings #####
 
 set nocompatible
@@ -62,17 +64,16 @@ set ofu=syntaxcomplete#Complete
 
 set t_Co=256
 set background=dark
-colorscheme tomorrow-night-eighties
-if exists('+colorcolumn')
-	set colorcolumn=80,120
-endif
-set showtabline=0
-syntax on
-let loaded_matchparen = 0
+syntax enable
 set cursorline
+if exists('+colorcolumn') | set colorcolumn=80,120 | endif
 "set cursorcolumn
+set showtabline=0
+let loaded_matchparen = 0
 "let g:Powerline_symbols = 'fancy'
 set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
+
+colorscheme tomorrow-night-eighties
 
 "##### whitespace #####
 
@@ -336,6 +337,4 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
 endif
 
 " keep at bottom
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
 
