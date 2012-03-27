@@ -20,7 +20,7 @@ syntax match perlNiceOperator containedin=ALL /==/          conceal cchar=≡
 syntax match perlNiceOperator containedin=ALL /!=/          conceal cchar=≠
 syntax match perlNiceOperator containedin=ALL /=\~/         conceal cchar=≅
 syntax match perlNiceOperator containedin=ALL /!\~/         conceal cchar=≆
-syntax match perlNiceOperator containedin=ALL /=>/          conceal cchar=⇒
+syntax match perlNiceOperator containedin=ALL /=>/          conceal cchar=→
 syntax match perlNiceOperator containedin=ALL /\->/         conceal cchar=▸
 
 hi  link perlNiceOperator  Operator
