@@ -147,18 +147,10 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <leader>l :set invlist!<CR>
 nmap <leader>p :set invpaste!<CR>
 
-" useful from RTK
-map <leader>ca :!~/usealiases<CR>
 map <leader>b :BufExplorer<cr>
 
 " ack
 nnoremap <leader>a :Ack
-
-" convenient mappings (TODO: what about insert mode?)
-"noremap <C-a> ggVG
-"nnoremap <C-x> "+d
-"noremap <C-c> "+y<CR>
-"noremap <C-v> "+p<CR>
 
 " Prev/Next Buffer
 nmap <C-n> :bn<CR>
@@ -191,17 +183,12 @@ inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
 " highlight cursor's current column
 map <F6> :set cursorcolumn!<CR>
 
-" replacing (local, global)
-"nnoremap gr gd[{V%:s/<C-R>///gc<left><left><left>
-"nnoremap gR gD:%s/<C-R>///gc<left><left><left>
-
+" Locally (local to block) rename a variable
 function! Refactor()
     call inputsave()
     let @z=input("What do you want to rename '" . @z . "' to? ")
     call inputrestore()
 endfunction
-
-" Locally (local to block) rename a variable
 nmap <Leader>rf "zyiw:call Refactor()<cr>mx:silent! norm gd<cr>[{V%:s/<C-R>//<c-r>z/g<cr>`x
 
 " folding (if enabled)
@@ -259,9 +246,6 @@ function! IndTxtObj(inner)
 	endif
 	normal! $
 endfunction
-
-" git blame
-vmap <leader>bl :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 inoremap <tab> <c-r>=InsertTabWrapper("forward")<CR>
 inoremap <s-tab> <c-r>=InsertTabWrapper("backward")<CR>

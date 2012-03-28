@@ -29,9 +29,13 @@ export LESS='MQeicsnfS'
 export LESSCHARSET='utf-8'
 export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 umask 002
 ssh-add &> /dev/null
-[ -d /digi/vod/VOD_TMP ] && export TMPDIR=/digi/vod/VOD_TMP
+if [ -d ~/.ssh ]; then
+    chmod 700 .ssh 2> /dev/null
+    chmod 600 .ssh/* 2> /dev/null
+fi
 
 # Prompt
 
@@ -145,3 +149,5 @@ function cmds ()
 # helpful stuff for work
 . rtk-helpers.sh
 export RTK_POST_TEST_HOOK=/home/estrickland/work/game/game.pl
+[ -d /digi/vod/VOD_TMP ] && export TMPDIR=/digi/vod/VOD_TMP
+
