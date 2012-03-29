@@ -320,5 +320,6 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
 	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
 endif
 
-" keep at bottom
+" plugin settings
+let g:Gitv_OpenHorizontal = 0
 
