@@ -278,20 +278,20 @@ if has('autocmd')
 		au BufLeave ~/.vimrc :source ~/.vimrc
 	augroup END
 
-    augroup redraw
-        au!
-        au VimResized * redraw!
-    augroup END
+    " augroup redraw
+    "     au!
+    "     au VimResized * redraw!
+    " augroup END
 
-	augroup focus
-		au!
-		au FocusLost * :wa
-	augroup END
+	" augroup focus
+		" au!
+		" au FocusLost * :wa
+	" augroup END
 
-	augroup dir
-		au!
-		au BufEnter * cd %:p:h
-	augroup END
+	" augroup dir
+	" 	au!
+	" 	au BufEnter * cd %:p:h
+	" augroup END
 
 	augroup lastcursorpos
 		au!

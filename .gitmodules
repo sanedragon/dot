@@ -46,3 +46,6 @@
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
 	url = git://github.com/gregsexton/gitv.git
+[submodule "vim/bundle/skittles_berry"]
+	path = vim/bundle/skittles_berry
+	url = http://github.com/shawncplus/skittles_berry
