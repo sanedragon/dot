@@ -22,7 +22,6 @@
     renames = copy
     color = auto
 	tool = vimdiff
-	external = git_diff_wrapper
 [rerere]
     enabled = true
 [merge]
