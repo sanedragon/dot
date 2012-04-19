@@ -71,7 +71,7 @@ if exists('+colorcolumn') | set colorcolumn=80,120 | endif
 set showtabline=0
 let loaded_matchparen = 0
 "let g:Powerline_symbols = 'fancy'
-set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
+"set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
 
 colorscheme tomorrow-night-eighties
 

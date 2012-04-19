@@ -1,6 +1,6 @@
-if !has('conceal')
+" if !has('conceal')
 	    finish
-endif
+" endif
 
 syntax match perlLambda /\(=>\?\s*\)\@<=sub\(\W\)\@=/ conceal cchar=λ
 
