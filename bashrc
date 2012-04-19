@@ -84,7 +84,7 @@ Usage: fstr [-i] \"pattern\" [\"filename pattern\"] "
         return;
     fi
     find . -type f -name "${2:-*}" -print0 | \
-    xargs -0 egrep --color=always -sn ${case} "$1" 2>&- | more
+    xargs -0 zegrep --color=always -sn ${case} "$1" 2>&- | more
 
 }
 
