@@ -1,0 +1,10 @@
+\pset null 'NULL'
+\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+\set HISTSIZE 100000
+\timing
+\encoding unicode
+
+-- red prompt for live
+\set PROMPT1 '%[%`(ps ho "%a" $PPID | grep -q _live) && echo -e "\\e[0;41m"`%]%/%R%#%[%033[m%] '
+\set PROMPT2 '%[%`(ps ho "%a" $PPID | grep -q _live) && echo -e "\\e[0;41m"`%]%/%R%#%[%033[m%] '
+\set PROMPT3 '%[%`(ps ho "%a" $PPID | grep -q _live) && echo -e "\\e[0;41m"`%]>>[%033[m%]'
