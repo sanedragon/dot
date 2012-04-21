@@ -147,7 +147,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <leader>l :set invlist!<CR>
 nmap <leader>p :set invpaste!<CR>
 
-map <leader>b :BufExplorer<cr>
+" map <leader>b :BufExplorer<cr>
 
 " ack
 nnoremap <leader>a :Ack
@@ -176,9 +176,9 @@ nnoremap <F2> :set list!<CR>
 
 nnoremap <F4> :set spell!<CR>
 
-" insert date
-nnoremap <F5> "=strftime("%d %b %Y %H:%M:%S")<CR>P
-inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
+" " insert date
+" nnoremap <F5> "=strftime("%d %b %Y %H:%M:%S")<CR>P
+" inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
 
 " highlight cursor's current column
 map <F6> :set cursorcolumn!<CR>
@@ -321,5 +321,13 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
 endif
 
 " plugin settings
-let g:Gitv_OpenHorizontal = 0
+"let g:Gitv_OpenHorizontal = 0
 
+if filereadable(expand("$HOME/.bin/ctags"))
+	let g:tagbar_ctags_bin="$HOME/.bin/ctags"
+endif
+nmap <F5> :TagbarToggle<CR>
+
+let g:syntastic_auto_loc_list=1
+
+finish
