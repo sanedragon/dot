@@ -329,5 +329,5 @@ endif
 nmap <F5> :TagbarToggle<CR>
 
 let g:syntastic_auto_loc_list=1
+let $TEST_DB=1
 
-finish
