@@ -77,6 +77,7 @@ alias promo_dev='psql promo_dev  -h mcdevdb1 -U promo -p 5433'
 
 # VOD databases
 alias vod_live='psql -h vodlivedb2 -p 5432 -U estrickland vod_live'
+alias vod_demo='psql -h vodlivedb2 -p 5432 -U estrickland vod_demo'
 alias vod_dev='psql -h voddevdb2 -p 5432 -U estrickland vod_dev'
 alias vod_test='psql -h voddb1 -p 5440 -U vod vod_test1'
 
