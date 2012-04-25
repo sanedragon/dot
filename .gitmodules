@@ -13,9 +13,6 @@
 [submodule "vim/bundle/rails"]
 	path = vim/bundle/rails
 	url = http://github.com/tpope/vim-rails
-[submodule "vim/bundle/vividchalk"]
-	path = vim/bundle/vividchalk
-	url = http://github.com/tpope/vim-vividchalk
 [submodule "vim/bundle/abolish"]
 	path = vim/bundle/abolish
 	url = http://github.com/tpope/vim-abolish
