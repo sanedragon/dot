@@ -40,6 +40,3 @@
 [submodule "vim/bundle/easymotion"]
 	path = vim/bundle/easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
-[submodule "vim/bundle/buffergator"]
-	path = vim/bundle/buffergator
-	url = git://github.com/jeetsukumaran/vim-buffergator.git
