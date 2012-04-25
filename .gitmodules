@@ -22,9 +22,6 @@
 [submodule "vim/bundle/commentary"]
 	path = vim/bundle/commentary
 	url = http://github.com/tpope/vim-commentary
-[submodule "vim/bundle/unimpaired"]
-	path = vim/bundle/unimpaired
-	url = http://github.com/tpope/vim-unimpaired
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = http://github.com/tpope/vim-repeat
