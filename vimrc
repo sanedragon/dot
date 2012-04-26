@@ -312,6 +312,7 @@ if has('autocmd')
 					\	endif									|
 					\ endif
 	augroup END
+
 endif
 
 "##### RTK-specific #####
@@ -320,8 +321,12 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
 	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
 endif
 
-" plugin settings
-"let g:Gitv_OpenHorizontal = 0
+" workaround for work
+au! BufEnter *
+
+"##### plugin settings #####
+
+let g:Gitv_OpenHorizontal = 0
 
 if filereadable(expand("$HOME/.bin/ctags"))
 	let g:tagbar_ctags_bin="$HOME/.bin/ctags"
