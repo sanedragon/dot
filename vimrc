@@ -147,7 +147,7 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <leader>l :set invlist!<CR>
 nmap <leader>p :set invpaste!<CR>
 
-" map <leader>b :BufExplorer<cr>
+map <leader>b :BufExplorer<cr>
 
 " ack
 nnoremap <leader>a :Ack
