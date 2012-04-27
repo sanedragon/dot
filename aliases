@@ -1,5 +1,4 @@
 # useful aliases
-alias rm='rm -i'
 alias alert="echo -e '\a'"
 alias grrl='man'
 alias dt='date +%Y%m%d%H%M%S'
