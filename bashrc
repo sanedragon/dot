@@ -25,7 +25,7 @@ export TZ="America/Los_Angeles"
 shopt -s checkwinsize		# update window size
 shopt -s expand_aliases		# aliases in scripts
 export PAGER='less'
-export LESS='MQeicsnfS'
+export LESS='MeisnfS'
 export LESSCHARSET='utf-8'
 export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
