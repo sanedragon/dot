@@ -1,3 +1,11 @@
+let list = []
+for dir in pathogen#split(&rtp)
+	if dir !~# '/usr/share/vim/vimfiles'
+		call add(list, dir)
+	endif
+endfor
+let &rtp = pathogen#join(list)
+
 call pathogen#runtime_append_all_bundles()
 
 "##### general settings #####
@@ -37,7 +45,7 @@ set history=100
 set notitle
 set ttyfast
 "set ttyscroll=0
-set scrolloff=3
+set scrolloff=10
 set nostartofline
 set backup
 set backupdir=~/.vim/local/backup/
@@ -149,15 +157,9 @@ nmap <leader>p :set invpaste!<CR>
 
 map <leader>b :BufExplorer<cr>
 
-" ack
-nnoremap <leader>a :Ack
-
 " Prev/Next Buffer
 nmap <C-n> :bn<CR>
 nmap <C-p> :bp<CR>
-
-" easier split window
-nnoremap <leader>w <C-w>s<C-w>k
 
 " scroll shortcuts
 nmap <C-h> zH
@@ -175,13 +177,6 @@ nnoremap <leader>/ :let @/ = ""<CR>
 nnoremap <F2> :set list!<CR>
 
 nnoremap <F4> :set spell!<CR>
-
-" " insert date
-" nnoremap <F5> "=strftime("%d %b %Y %H:%M:%S")<CR>P
-" inoremap <F5> <C-R>=strftime("%d %b %Y %H:%M:%S")<CR>
-
-" highlight cursor's current column
-map <F6> :set cursorcolumn!<CR>
 
 " Locally (local to block) rename a variable
 function! Refactor()
@@ -264,36 +259,47 @@ function! InsertTabWrapper(direction)
 	endif
 endfunction
 
-" block select with right-click-and-drag
-noremap <RightMouse> <LeftMouse><Esc><C-V>
-noremap <RightDrag> <LeftDrag>
+" Increment a visual selection (like a column of numbers)
+function! Incr()
+	let a = line('.') - line("'<")
+	let c = virtcol("'<")
+	if a > 0
+		execute 'normal! '.c.'|'.a."\<C-a>"
+	endif
+	normal `<
+endfunction
+vnoremap <C-a> :call Incr()<CR>
+
+" block select with middle-click-and-drag
+noremap <MiddleMouse> <LeftMouse><Esc><C-V>
+noremap <MiddleDrag> <LeftDrag>
 
 "##### auto commands #####
 
 if has('autocmd')
 	" settings immediately take effect
-	augroup vimrc
+	augroup instantsettings
 		au!
 		au BufWritePost ~/.vimrc :source ~/.vimrc
 		au BufLeave ~/.vimrc :source ~/.vimrc
 	augroup END
 
-    " augroup redraw
-    "     au!
-    "     au VimResized * redraw!
-    " augroup END
+    augroup redrawonresize
+        au!
+        au VimResized * redraw!
+    augroup END
 
-	" augroup focus
-		" au!
-		" au FocusLost * :wa
-	" augroup END
+	augroup writeonfocus
+		au!
+		au FocusLost * :wa
+	augroup END
 
-	" augroup dir
-	" 	au!
-	" 	au BufEnter * cd %:p:h
-	" augroup END
+	augroup cdonopen
+		au!
+		au BufEnter * cd %:p:h
+	augroup END
 
-	augroup lastcursorpos
+	augroup rememberlastcursorpos
 		au!
 		au BufReadPost *
 					\ if line("'\"") > 0 && line ("'\"") <= line("$")	|
@@ -301,7 +307,7 @@ if has('autocmd')
 					\ endif
 	augroup END
 
-	augroup nerdtree
+	augroup closenerdtreeiflastwindow
 		au!
 		au BufEnter *
 					\ if exists("t:NERDTreeBufName")			|
@@ -313,6 +319,12 @@ if has('autocmd')
 					\ endif
 	augroup END
 
+	if filereadable(expand("$HOME/bin/touch_handler_cgis"))
+		augroup touchhandlers
+			au!
+			au BufWritePost * let output = system(expand("$HOME/bin/touch_handler_cgis"))
+		augroup END
+	endif
 endif
 
 "##### RTK-specific #####
@@ -323,6 +335,7 @@ endif
 
 " workaround for work
 au! BufEnter *
+let $TEST_DB=1
 
 "##### plugin settings #####
 
@@ -332,7 +345,9 @@ if filereadable(expand("$HOME/.bin/ctags"))
 	let g:tagbar_ctags_bin="$HOME/.bin/ctags"
 endif
 nmap <F5> :TagbarToggle<CR>
+let g:tagbar_autoclose = 0
+let g:tagbar_singleclick = 1
+let g:tagbar_autoshowtag = 1
 
 let g:syntastic_auto_loc_list=1
-let $TEST_DB=1
 
