@@ -341,9 +341,9 @@ let $TEST_DB=1
 
 let g:Gitv_OpenHorizontal = 0
 
-if filereadable(expand("$HOME/.bin/ctags"))
-	let g:tagbar_ctags_bin="$HOME/.bin/ctags"
-endif
+if filereadable(expand("$HOME/.bin/ctags")) | let g:tagbar_ctags_bin="$HOME/.bin/ctags" | endif
+if filereadable(expand("$HOME/.local/bin/ctags")) | let g:tagbar_ctags_bin="$HOME/.local/bin/ctags" | endif
+
 nmap <F5> :TagbarToggle<CR>
 let g:tagbar_autoclose = 0
 let g:tagbar_singleclick = 1
