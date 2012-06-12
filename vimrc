@@ -89,6 +89,7 @@ set nowrap
 set whichwrap+=<>[]
 set textwidth=80
 "set formatoptions=tcqron1
+set formatoptions+=a
 "set lbr
 "set showbreak=→
 set smartindent
