@@ -1,10 +1,9 @@
-KeepAlive yes
-ServerAliveInterval 60
-#User estrickland
-ForwardX11		yes
-ForwardAgent	yes
+KeepAlive				yes
+ServerAliveInterval		60
+ForwardX11				yes
+ForwardAgent			yes
 
-Host voddev{1,2}
+Host voddev1 voddev2
 	User estrickland
 
 # EC2 tunnel
