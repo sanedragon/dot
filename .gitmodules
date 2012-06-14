@@ -43,3 +43,6 @@
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = http://github.com/tpope/vim-repeat
+[submodule "vim/bundle/visualstar"]
+	path = vim/bundle/visualstar
+	url = git://github.com/thinca/vim-visualstar.git
