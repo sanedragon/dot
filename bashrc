@@ -16,14 +16,18 @@ fi
 
 # Settings
 
+shopt -s checkwinsize		# update window size
+shopt -s expand_aliases		# aliases in scripts
+shopt -u huponexit			# don't kill children on terminal exit
+
+# Environment
+
 export LANGUAGE="en"
 export LC_MESSAGES="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export TERM="xterm-256color"
 export TZ="America/Los_Angeles"
-shopt -s checkwinsize		# update window size
-shopt -s expand_aliases		# aliases in scripts
 export PAGER='less'
 export LESS='MeisnfS'
 export LESSCHARSET='utf-8'
