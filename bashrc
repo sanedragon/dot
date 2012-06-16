@@ -10,15 +10,19 @@ fi
 
 # Paths
 
-[ -d $HOME/.local/bin ] && export PATH=~/.local/bin:"${PATH}"
-[ -d $HOME/bin ] && export PATH=~/bin:"${PATH}"
-[ -d $HOME/.bin ] && export PATH=~/.bin:"${PATH}"
+[ -d $HOME/.local/bin ]	&& export PATH=$HOME/.local/bin:"${PATH}"
+[ -d $HOME/bin ]		&& export PATH=$HOME/bin:"${PATH}"
+[ -d $HOME/.bin ]		&& export PATH=$HOME/.bin:"${PATH}"
+
+[ -d $HOME/work ]		&& export CDPATH=$HOME/work
 
 # Settings
 
 shopt -s checkwinsize		# update window size
 shopt -s expand_aliases		# aliases in scripts
 shopt -u huponexit			# don't kill children on terminal exit
+shopt -s cdspell			# fix typos in cd
+shopt -s cdable_vars		# cd to bash variables
 
 # Environment
 
