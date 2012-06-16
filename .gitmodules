@@ -43,3 +43,6 @@
 [submodule "vim/bundle/visualstar"]
 	path = vim/bundle/visualstar
 	url = git://github.com/thinca/vim-visualstar.git
+[submodule "vim/bundle/vim-css-color"]
+	path = vim/bundle/vim-css-color
+	url = git://github.com/ap/vim-css-color.git
