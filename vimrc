@@ -1,11 +1,3 @@
-let list = []
-for dir in pathogen#split(&rtp)
-	if dir !~# '/usr/share/vim/vimfiles'
-		call add(list, dir)
-	endif
-endfor
-let &rtp = pathogen#join(list)
-
 call pathogen#runtime_append_all_bundles()
 
 "##### general settings #####
@@ -89,7 +81,6 @@ set nowrap
 set whichwrap+=<>[]
 set textwidth=80
 "set formatoptions=tcqron1
-set formatoptions+=a
 "set lbr
 "set showbreak=→
 set smartindent
