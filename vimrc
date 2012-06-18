@@ -37,7 +37,7 @@ set history=100
 set notitle
 set ttyfast
 "set ttyscroll=0
-set scrolloff=10
+set scrolloff=0
 set nostartofline
 set backup
 set backupdir=~/.vim/local/backup/
