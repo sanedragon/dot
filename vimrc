@@ -81,7 +81,7 @@ let loaded_matchparen = 0
 "let g:Powerline_symbols = 'fancy'
 "set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
 
-colorscheme skittles_berry
+colorscheme molokai
 
 "##### whitespace #####
 
