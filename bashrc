@@ -10,11 +10,22 @@ fi
 
 # Paths
 
-[ -d $HOME/.local/bin ] && export PATH=~/.local/bin:"${PATH}"
-[ -d $HOME/bin ] && export PATH=~/bin:"${PATH}"
-[ -d $HOME/.bin ] && export PATH=~/.bin:"${PATH}"
+[ -d $HOME/.local/bin ]	&& export PATH=$HOME/.local/bin:"${PATH}"
+[ -d $HOME/bin ]		&& export PATH=$HOME/bin:"${PATH}"
+[ -d $HOME/.bin ]		&& export PATH=$HOME/.bin:"${PATH}"
+[ -d /usr/local/bin ]	&& export PATH=/usr/local/bin:"${PATH}"
+
+[ -d $HOME/work ]		&& export CDPATH=$HOME/work
 
 # Settings
+
+shopt -s checkwinsize		# update window size
+shopt -s expand_aliases		# aliases in scripts
+shopt -u huponexit			# don't kill children on terminal exit
+shopt -s cdspell			# fix typos in cd
+shopt -s cdable_vars		# cd to bash variables
+
+# Environment
 
 export LANGUAGE="en"
 export LC_MESSAGES="en_US.UTF-8"
@@ -22,8 +33,6 @@ export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export TERM="xterm-256color"
 export TZ="America/Los_Angeles"
-shopt -s checkwinsize		# update window size
-shopt -s expand_aliases		# aliases in scripts
 export PAGER='less'
 export LESS='MeisnfS'
 export LESSCHARSET='utf-8'

@@ -94,9 +94,5 @@ alias mobile_live='psql -h mobilelivedb1.vw -p 5432 -U estrickland mobile_live'
 # multi_screen
 alias multi_live='psql -h mobiledb2.vw -p 5432 -U estrickland multi_screen_live'
 
-# digi_download
-alias digi_download_live='psql -h digidownlivedb1.vw -p 5432 -U estrickland digi_download_live'
-alias digi_download_dev='psql -h digidowndevdb1 -p 5435 -U estrickland digi_download_dev'
-
 # rentcorp
 alias rent_live='psql -h fmoviesdb.pdx -p 5432 -U estrickland rentcorp_live'
