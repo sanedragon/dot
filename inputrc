@@ -16,3 +16,5 @@
 #"\e[2~":	quoted-insert # Insert
 #"\e[5~":	beginning-of-history # PageUp
 #"\e[6~":	end-of-history # PageDown
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word

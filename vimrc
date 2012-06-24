@@ -74,7 +74,7 @@ let loaded_matchparen = 0
 "set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
 
 colorscheme molokai
-
+set guifont=Inconsolata:h13
 "##### whitespace #####
 
 set nowrap
@@ -326,7 +326,7 @@ function! s:transpose()
 
     for line in lines
         let len = len(line)
-        if len > maxcol 
+        if len > maxcol
             let maxcol = len
         endif
     endfor
@@ -368,5 +368,5 @@ let g:tagbar_autoclose = 0
 let g:tagbar_singleclick = 0
 let g:tagbar_autoshowtag = 1
 
-let g:syntastic_auto_loc_list=1
+let g:netrw_use_noswf=0
 
