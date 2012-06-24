@@ -58,8 +58,8 @@ export PS1="${BBlue}\h:${Color_Off}${BGreen}\w${Color_Off} \$(__git_ps1 \"${BPur
 
 # History
 shopt -s histappend
-export HISTFILESIZE=5000000
-export HISTSIZE=5000
+export HISTFILESIZE=50000000
+export HISTSIZE=500000
 export HISTIGNORE='l:ls:la:ll:cd:w'
 export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
 export HISTCONTROL=ignoredups:ignorespace
