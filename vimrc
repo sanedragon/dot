@@ -74,7 +74,7 @@ let loaded_matchparen = 0
 "set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
 
 colorscheme molokai
-
+set guifont=Inconsolata:h13
 "##### whitespace #####
 
 set nowrap
@@ -370,3 +370,4 @@ let g:tagbar_autoshowtag = 1
 
 let g:syntastic_auto_loc_list=1
 
+let g:netrw_use_noswf=0
