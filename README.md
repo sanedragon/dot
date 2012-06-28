@@ -10,5 +10,6 @@ Deploy
 
 	git clone git@github.com:lilix/dot.git ~/.dot
 	cd ~/.dot
+	git submodule init
+	git submodule update
 	./deploy.py
-
