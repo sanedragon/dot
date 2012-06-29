@@ -9,3 +9,6 @@ attrcolor b ".I"
 
 # erase background with current bg color
 defbce "on"
+
+# prefer audible bell in screen
+vbell off
