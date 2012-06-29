@@ -8,7 +8,10 @@ startup_message off
 attrcolor b ".I"
 
 # erase background with current bg color
-defbce "on"
+defbce on
 
 # prefer audible bell in screen
 vbell off
+
+defutf8 on
+utf8 on
