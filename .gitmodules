@@ -74,7 +74,3 @@
 	path = vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
 	ignore = untracked
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = git://github.com/tsaleh/vim-supertab.git
-	ignore = untracked
