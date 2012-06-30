@@ -82,3 +82,7 @@
 	path = vim/bundle/supertab
 	url = git://github.com/tsaleh/vim-supertab.git
 	ignore = untracked
+[submodule "vim/bundle/perlomni"]
+	path = vim/bundle/perlomni
+	url = git://github.com/c9s/perlomni.vim.git
+	ignore = untracked
