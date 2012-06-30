@@ -1,4 +1,6 @@
+" Pathogen stuff first
 call pathogen#infect()
+call pathogen#helptags()
 
 "##### general settings #####
 
