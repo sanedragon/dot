@@ -313,11 +313,11 @@ let g:tagbar_autoshowtag = 1
 
 " supertab
 let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<c-x><c-n>'
+let g:SuperTabContextDefaultCompletionType = '&omnifunc'
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabContextDiscoverDiscovery =
-       \ ["&completefunc:<c-x><c-n>", "&omnifunc:<c-x><c-o>"]
+       \ ["&omnifunc:<c-x><c-o>", "&completefunc<c-x><c-n>"]
 
 " neocomplcache
 let g:acp_enableAtStartup = 0
