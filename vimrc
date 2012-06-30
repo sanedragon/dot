@@ -130,6 +130,9 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 
 "##### keyboard mappings #####
 
+nnoremap <silent> } :let @1=@/<CR>/^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
+nnoremap <silent> { :let @1=@/<CR>?^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
+
 " NERDTreeToggle
 noremap <leader>n :NERDTreeToggle<CR>
 
@@ -178,7 +181,7 @@ function! Refactor()
     let @z=input("What do you want to rename '" . @z . "' to? ")
     call inputrestore()
 endfunction
-nmap <Leader>rf "zyiw:call Refactor()<cr>mx:silent! norm gd<cr>[{V%:s/<C-R>//<c-r>z/g<cr>`x
+nnoremap <Leader>rf "zyiw:call Refactor()<cr>mx:silent! norm gd<cr>[{V%:s/<C-R>//<c-r>z/g<cr>`x
 
 " folding (if enabled)
 inoremap <F7> <C-O>za
