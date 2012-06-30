@@ -300,15 +300,22 @@ let $TEST_DB=1
 
 "##### plugin settings #####
 
+" gitv
 let g:Gitv_OpenHorizontal = 0
 
+" tagbar
 if filereadable(expand("$HOME/.bin/ctags")) | let g:tagbar_ctags_bin="$HOME/.bin/ctags" | endif
 if filereadable(expand("$HOME/.local/bin/ctags")) | let g:tagbar_ctags_bin="$HOME/.local/bin/ctags" | endif
-
 nmap <F5> :TagbarToggle<CR>
 let g:tagbar_autoclose = 0
 let g:tagbar_singleclick = 0
 let g:tagbar_autoshowtag = 1
 
-let g:netrw_use_noswf=0
+" supertab
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-n>'
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery =
+	\ ["&completefunc:<c-x><c-n>", "&omnifunc:<c-x><c-o>"]
 
