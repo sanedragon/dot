@@ -78,3 +78,7 @@
 	path = vim/bundle/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
 	ignore = untracked
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = git://github.com/tsaleh/vim-supertab.git
+	ignore = untracked

@@ -311,23 +311,22 @@ let g:tagbar_autoclose = 0
 let g:tagbar_singleclick = 0
 let g:tagbar_autoshowtag = 1
 
-" neocomplcache
+" supertab
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-n>'
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery =
+       \ ["&completefunc:<c-x><c-n>", "&omnifunc:<c-x><c-o>"]
 
-" Disable AutoComplPop.
+" neocomplcache
 let g:acp_enableAtStartup = 0
-" Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
