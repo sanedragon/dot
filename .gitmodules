@@ -16,9 +16,6 @@
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
 	url = http://github.com/tpope/vim-markdown
-[submodule "vim/bundle/commentary"]
-	path = vim/bundle/commentary
-	url = http://github.com/tpope/vim-commentary
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
 	url = git://github.com/gregsexton/gitv.git
@@ -52,3 +49,6 @@
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = git://github.com/tomasr/molokai.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
