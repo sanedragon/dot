@@ -236,22 +236,20 @@ function! IndTxtObj(inner)
 	normal! $
 endfunction
 
-inoremap <tab> <c-r>=InsertTabWrapper("forward")<CR>
-inoremap <s-tab> <c-r>=InsertTabWrapper("backward")<CR>
-inoremap <c-tab> <c-r>=InsertTabWrapper("startkey")<CR>
-" Remap TAB to keyword completion
-function! InsertTabWrapper(direction)
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-		return "\<tab>"
-	elseif "backward" == a:direction
-		return "\<c-p>"
-	elseif "forward" == a:direction
-		return "\<c-n>"
+function! SuperCleverTab()
+	if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+		return "\<Tab>"
 	else
-		return "\<c-x>\<c-k>"
+		if &omnifunc != ''
+			return "\<C-X>\<C-O>"
+		elseif &dictionary != ''
+			return "\<C-K>"
+		else
+			return "\<C-N>"
+		endif
 	endif
 endfunction
+inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 
 " Increment a visual selection (like a column of numbers)
 function! Incr()
