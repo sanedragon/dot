@@ -8,23 +8,23 @@ set nocompatible
 set encoding=utf-8
 set number
 "if exists('+relativenumber')
-"	set relativenumber
+"   set relativenumber
 "endif
 if has('unnamedplus')
-	set clipboard=unnamedplus
+    set clipboard=unnamedplus
 endif
 set numberwidth=4
 set ruler
 if has('persistent_undo')
-	set undodir=~/.vim/local/undo/
-	set undofile
-	set undolevels=100000
-	if exists('+undoreload')
-		set undoreload=100000
-	endif
+    set undodir=~/.vim/local/undo/
+    set undofile
+    set undolevels=100000
+    if exists('+undoreload')
+        set undoreload=100000
+    endif
 endif
 if exists('+cryptmethod')
-	set cryptmethod=blowfish
+    set cryptmethod=blowfish
 endif
 let mapleader = ","
 "set digraph
@@ -48,13 +48,13 @@ set autowrite
 set backspace=indent,eol,start
 set splitbelow
 if has('mouse')
-	set mouse=a
-	set mousemodel=popup_setpos
-	map <F10> :set paste<CR>
-	map <F11> :set nopaste<CR>
-	imap <F10> <C-O>:set paste<CR>
-	imap <F11> <nop>
-	set pastetoggle=<F11>
+    set mouse=a
+    set mousemodel=popup_setpos
+    map <F10> :set paste<CR>
+    map <F11> :set nopaste<CR>
+    imap <F10> <C-O>:set paste<CR>
+    imap <F11> <nop>
+    set pastetoggle=<F11>
 endif
 set viminfo^=%
 filetype plugin indent on
@@ -89,7 +89,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-"set expandtab
+set expandtab
 set list listchars=tab:▸\ ,trail:·",eol:¬
 filetype indent on
 set virtualedit=onemore
@@ -198,12 +198,12 @@ nnoremap <C-W><C-O> :tabnew %<CR>
 
 " Increment a visual selection (like a column of numbers)
 function! Incr()
-	let a = line('.') - line("'<")
-	let c = virtcol("'<")
-	if a > 0
-		execute 'normal! '.c.'|'.a."\<C-a>"
-	endif
-	normal `<
+    let a = line('.') - line("'<")
+    let c = virtcol("'<")
+    if a > 0
+        execute 'normal! '.c.'|'.a."\<C-a>"
+    endif
+    normal `<
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 
@@ -214,54 +214,54 @@ noremap <MiddleDrag> <LeftDrag>
 "##### auto commands #####
 
 if has('autocmd')
-	" settings immediately take effect
-	augroup instantsettings
-		au!
-		au BufWritePost ~/.vimrc :source ~/.vimrc
-		au BufLeave ~/.vimrc :source ~/.vimrc
-	augroup END
+    " settings immediately take effect
+    augroup instantsettings
+        au!
+        au BufWritePost ~/.vimrc :source ~/.vimrc
+        au BufLeave ~/.vimrc :source ~/.vimrc
+    augroup END
 
     augroup redrawonresize
         au!
         au VimResized * redraw!
     augroup END
 
-	augroup writeonfocus
-		au!
-		au FocusLost * :wa
-	augroup END
+    augroup writeonfocus
+        au!
+        au FocusLost * :wa
+    augroup END
 
-	augroup cdonopen
-		au!
-		au BufEnter * cd %:p:h
-	augroup END
+    augroup cdonopen
+        au!
+        au BufEnter * cd %:p:h
+    augroup END
 
-	augroup rememberlastcursorpos
-		au!
-		au BufReadPost *
-					\ if line("'\"") > 0 && line ("'\"") <= line("$")	|
-					\   exe "normal! g'\""								|
-					\ endif
-	augroup END
+    augroup rememberlastcursorpos
+        au!
+        au BufReadPost *
+                    \ if line("'\"") > 0 && line ("'\"") <= line("$")   |
+                    \   exe "normal! g'\""                              |
+                    \ endif
+    augroup END
 
-	augroup closenerdtreeiflastwindow
-		au!
-		au BufEnter *
-					\ if exists("t:NERDTreeBufName")			|
-					\	if bufwinnr(t:NERDTreeBufName) != -1	|
-					\		if winnr("$") == 1					|
-					\			q								|
-					\		endif								|
-					\	endif									|
-					\ endif
-	augroup END
+    augroup closenerdtreeiflastwindow
+        au!
+        au BufEnter *
+                    \ if exists("t:NERDTreeBufName")            |
+                    \   if bufwinnr(t:NERDTreeBufName) != -1    |
+                    \       if winnr("$") == 1                  |
+                    \           q                               |
+                    \       endif                               |
+                    \   endif                                   |
+                    \ endif
+    augroup END
 
-	if filereadable(expand("$HOME/bin/touch_handler_cgis"))
-		augroup touchhandlers
-			au!
-			au BufWritePost * let output = system(expand("$HOME/bin/touch_handler_cgis"))
-		augroup END
-	endif
+    if filereadable(expand("$HOME/bin/touch_handler_cgis"))
+        augroup touchhandlers
+            au!
+            au BufWritePost * let output = system(expand("$HOME/bin/touch_handler_cgis"))
+        augroup END
+    endif
 endif
 
 "##### functions #####
@@ -294,7 +294,7 @@ command! TransposeBuffer call s:transpose()
 "##### RTK-specific #####
 
 if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
-	source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
+    source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
 endif
 
 " workaround for work
@@ -331,7 +331,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 if !exists('g:neocomplcache_keyword_patterns')
-	let g:neocomplcache_keyword_patterns = {}
+    let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
