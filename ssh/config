@@ -6,27 +6,6 @@ ForwardAgent			yes
 Host voddev1 voddev2
 	User estrickland
 
-# EC2 tunnel
-Host hypodermia.me
-	Hostname		hypodermia.me
-	User			hypodermia
-	TcpKeepAlive	yes
-	ForwardX11		yes
-	ForwardAgent	yes
-	IdentitiesOnly	yes
-	IdentityFile	~/.ssh/id_rsa
-	DynamicForward	8000
-
-Host ec2
-	Hostname		hypodermia.me
-	User			ec2-user
-	TcpKeepAlive	yes
-	ForwardX11		yes
-	ForwardAgent	yes
-	IdentitiesOnly	yes
-	IdentityFile	~/.ssh/hypodermia.pem
-	DynamicForward	8000
-
 # Rentrak
 Host voddev1.remote
 	TcpKeepAlive	yes
