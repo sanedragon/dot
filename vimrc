@@ -152,7 +152,8 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <leader>l :set invlist!<CR>
 nmap <leader>p :set invpaste!<CR>
 
-map <leader>b :BufExplorer<cr>
+nnoremap <silent> <Leader>t :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
 " Prev/Next Buffer
 nmap <C-n> :bn<CR>
