@@ -28,9 +28,8 @@ shopt -s cdable_vars		# cd to bash variables
 # Environment
 
 export LANGUAGE="en"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 # export TERM="xterm-256color"
 export TZ="America/Los_Angeles"
 export PAGER='less'
