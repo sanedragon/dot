@@ -1,95 +1,72 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-	ignore = all
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
-	ignore = all
 [submodule "vim/bundle/abolish"]
 	path = vim/bundle/abolish
 	url = http://github.com/tpope/vim-abolish
-	ignore = all
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = http://github.com/tpope/vim-surround
-	ignore = all
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
 	url = http://github.com/tpope/vim-markdown
-	ignore = all
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
 	url = git://github.com/gregsexton/gitv.git
-	ignore = all
 [submodule "vim/bundle/skittles_berry"]
 	path = vim/bundle/skittles_berry
 	url = http://github.com/shawncplus/skittles_berry
-	ignore = all
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = http://github.com/scrooloose/syntastic.git
-	ignore = all
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
-	ignore = all
 [submodule "vim/bundle/easymotion"]
 	path = vim/bundle/easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
-	ignore = all
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
 	url = git://github.com/corntrace/bufexplorer.git
-	ignore = all
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = http://github.com/tpope/vim-repeat
-	ignore = all
 [submodule "vim/bundle/visualstar"]
 	path = vim/bundle/visualstar
 	url = git://github.com/thinca/vim-visualstar.git
-	ignore = all
 [submodule "vim/bundle/vim-css-color"]
 	path = vim/bundle/vim-css-color
 	url = git://github.com/ap/vim-css-color.git
-	ignore = all
 [submodule "vim/bundle/monokai"]
 	path = vim/bundle/monokai
 	url = git://github.com/sickill/vim-monokai.git
-	ignore = all
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = git://github.com/tomasr/molokai.git
-	ignore = all
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
-	ignore = all
 [submodule "vim/bundle/ruby"]
 	path = vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
-	ignore = all
 [submodule "vim/bundle/neocomplcache"]
 	path = vim/bundle/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
-	ignore = all
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = git://github.com/tsaleh/vim-supertab.git
-	ignore = all
 [submodule "vim/bundle/perlomni"]
 	path = vim/bundle/perlomni
 	url = git://github.com/c9s/perlomni.vim.git
-	ignore = all
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
-	ignore = all
 [submodule "vim/bundle/command-t"]
 	path = vim/bundle/command-t
 	url = git://git.wicent.com/command-t.git
-	ignore = all
 [submodule "vim/bundle/dbext"]
 	path = vim/bundle/dbext
 	url = git://github.com/vim-scripts/dbext.vim.git
