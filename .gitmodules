@@ -90,3 +90,6 @@
 	path = vim/bundle/command-t
 	url = git://git.wicent.com/command-t.git
 	ignore = all
+[submodule "vim/bundle/dbext"]
+	path = vim/bundle/dbext
+	url = git://github.com/vim-scripts/dbext.vim.git
