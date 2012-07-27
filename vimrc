@@ -92,7 +92,7 @@ set softtabstop=4
 set expandtab
 set list listchars=tab:▸\ ,trail:·",eol:¬
 filetype indent on
-set virtualedit=onemore
+set virtualedit=block
 
 "##### folding #####
 
@@ -120,6 +120,7 @@ vnoremap <tab> %
 
 "##### tab completion #####
 
+set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.pyc,*.DS_Store,*.db
 
