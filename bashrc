@@ -10,6 +10,7 @@ fi
 
 # Paths
 
+[ -d /usr/local/sbin ]	&& export PATH=/usr/local/sbin:"${PATH}"
 [ -d /usr/local/bin ]	&& export PATH=/usr/local/bin:"${PATH}"
 [ -d $HOME/.local/bin ]	&& export PATH=$HOME/.local/bin:"${PATH}"
 [ -d $HOME/bin ]		&& export PATH=$HOME/bin:"${PATH}"
