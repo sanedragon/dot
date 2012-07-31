@@ -64,9 +64,9 @@ set ofu=syntaxcomplete#Complete
 
 "##### appearance #####
 
+syntax enable
 set t_Co=256
 set background=dark
-syntax enable
 set cursorline
 if exists('+colorcolumn') | set colorcolumn=80,120 | endif
 "set cursorcolumn
