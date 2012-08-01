@@ -125,20 +125,6 @@ function extract()
      fi
 }
 
-# a better rm which only prompts once
-if [ -n "$PS1" ] ; then
-	rm () 
-	{ 
-		ls -FCsd "$@"
-		echo 'remove[yn]? ' | tr -d '\012' ; read
-		if [ "_$REPLY" = "_y" ]; then
-			/bin/rm -rf "$@"
-		else
-			echo '(cancelled)'
-		fi
-	}
-fi
-
 calc() { bc <<< "scale=4; $@"; } # quick bc frontend with 4 decimal precision
 title() { echo -ne "\e];$@\007"; } # change terminal/tab title
 manopt() { man $1 | sed -n "/^\s\+-\+$2\b/,/^\s*$/p"|sed '$d;'; } # only show part of man page for specified option. Ex: manopt rm I
