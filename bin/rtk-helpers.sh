@@ -6,7 +6,7 @@ export RENTASK_USER=est
 export RENTRAK_EMAIL=emily.strickland@rentrakmail.com
 #export CVSWORK=/home/estrickland/work/ondemand/perl_lib
 #ssh-agent $SHELL
-export PERL5LIB=/usr/local/vod/perl_lib
+[ -e /usr/local/vod/perl_lib ] && export PERL5LIB=/usr/local/vod/perl_lib
 
 # Helper functions
 
