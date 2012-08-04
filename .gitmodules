@@ -82,6 +82,3 @@
 [submodule "vim/bundle/xoria256"]
 	path = vim/bundle/xoria256
 	url = https://github.com/vim-scripts/xoria256.vim
-[submodule "vim/bundle/Smyck-Color-Scheme"]
-	path = vim/bundle/Smyck-Color-Scheme
-	url = https://github.com/hukl/Smyck-Color-Scheme/
