@@ -159,4 +159,4 @@ function cmds ()
 . rtk-helpers.sh
 export RTK_POST_TEST_HOOK=/home/estrickland/work/game/game.pl
 [ -d /digi/vod/VOD_TMP ] && export TMPDIR=/digi/vod/VOD_TMP
-
+export COLOR_TESTS=1
