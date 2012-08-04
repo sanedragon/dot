@@ -7,12 +7,10 @@ call pathogen#helptags()
 set nocompatible
 set encoding=utf-8
 set number
-"if exists('+relativenumber')
-"   set relativenumber
-"endif
 if has('unnamedplus')
     set clipboard=unnamedplus
 endif
+set relativenumber
 set numberwidth=4
 set ruler
 if has('persistent_undo')
@@ -246,11 +244,6 @@ if has('autocmd')
         au FocusLost * :wa
     augroup END
 
-    augroup cdonopen
-        au!
-        au BufEnter * cd %:p:h
-    augroup END
-
     augroup rememberlastcursorpos
         au!
         au BufReadPost *
@@ -259,15 +252,27 @@ if has('autocmd')
                     \ endif
     augroup END
 
-    augroup closenerdtreeiflastwindow
+    augroup CloseTagBarAndNERDTreeIfOnlyWindows
         au!
         au BufEnter *
-                    \ if exists("t:NERDTreeBufName")            |
-                    \   if bufwinnr(t:NERDTreeBufName) != -1    |
-                    \       if winnr("$") == 1                  |
-                    \           q                               |
-                    \       endif                               |
-                    \   endif                                   |
+                    \ if exists("t:NERDTreeBufName")                    |
+                    \   if bufwinnr(t:NERDTreeBufName) != -1            |
+                    \       if winnr("$") == 1                          |
+                    \           q                                       |
+                    \       endif                                       |
+                    \   endif                                           |
+                    \ endif                                             |
+                    \ if bufwinnr('__Tagbar__') != -1                   |
+                    \     if winnr("$") == 1                            |
+                    \         q                                         |
+                    \     endif                                         |
+                    \     if winnr("$") == 2                            |
+                    \         if exists("t:NERDTreeBufName")            |
+                    \             if bufwinnr(t:NERDTreeBufName) != -1  |
+                    \                 qa                                |
+                    \             endif                                 |
+                    \         endif                                     |
+                    \     endif                                         |
                     \ endif
     augroup END
 
@@ -302,10 +307,10 @@ let g:syntastic_enable_highlighting = 1
 let g:syntastic_auto_loc_list=1
 
 " tagbar
-if filereadable(expand("$HOME/.bin/ctags"))
-    let g:tagbar_ctags_bin="$HOME/.bin/ctags"
-elseif filereadable(expand("$HOME/.local/bin/ctags"))
+if filereadable(expand("$HOME/.local/bin/ctags"))
     let g:tagbar_ctags_bin="$HOME/.local/bin/ctags"
+elseif filereadable(expand("$HOME/.bin/ctags"))
+    let g:tagbar_ctags_bin="$HOME/.bin/ctags"
 endif
 
 nmap <F5> :TagbarToggle<CR>
