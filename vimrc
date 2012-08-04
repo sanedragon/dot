@@ -71,7 +71,7 @@ set cursorline
 if exists('+colorcolumn') | set colorcolumn=80,120 | endif
 set showtabline=0
 let loaded_matchparen = 0
-"set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
+set fillchars+=fold:\─,diff:\─,vert:\ ,stl:\ ,stlnc:\ 
 
 " highlights
 
@@ -86,7 +86,6 @@ sign define currentLine linehl=currentLine
 sign define breakPoint  linehl=breakPoint  text=>>
 sign define both        linehl=currentLine text=>>
 sign define empty       linehl=empty
-
 
 "##### whitespace #####
 

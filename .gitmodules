@@ -82,3 +82,6 @@
 [submodule "vim/bundle/xoria256"]
 	path = vim/bundle/xoria256
 	url = https://github.com/vim-scripts/xoria256.vim
+[submodule "vim/bundle/superman"]
+	path = vim/bundle/superman
+	url = https://github.com/tristen/superman
