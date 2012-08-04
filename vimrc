@@ -65,18 +65,31 @@ set ofu=syntaxcomplete#Complete
 "##### appearance #####
 
 syntax enable
-set t_Co=256
 set background=dark
+colorscheme xoria256
+set guifont=Inconsolata:h13
 set cursorline
-if exists('+colorcolumn') | set colorcolumn=80,120 | endif
 "set cursorcolumn
+if exists('+colorcolumn') | set colorcolumn=80,120 | endif
 set showtabline=0
 let loaded_matchparen = 0
-"let g:Powerline_symbols = 'fancy'
 "set fillchars+=fold:\─,diff:\─,vert:\│,stl:\ ,stlnc:\
 
-colorscheme molokai
-set guifont=Inconsolata:h13
+" highlights
+
+hi clear ColorColumn
+hi link ColorColumn CursorLine
+
+hi currentLine term=reverse cterm=reverse gui=reverse
+hi breakPoint  term=NONE    cterm=NONE    gui=NONE
+hi empty       term=NONE    cterm=NONE    gui=NONE
+
+sign define currentLine linehl=currentLine
+sign define breakPoint  linehl=breakPoint  text=>>
+sign define both        linehl=currentLine text=>>
+sign define empty       linehl=empty
+
+
 "##### whitespace #####
 
 set nowrap
@@ -281,9 +294,20 @@ let $TEST_DB=1
 " gitv
 let g:Gitv_OpenHorizontal = 0
 
+" syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_auto_loc_list=1
+
 " tagbar
-if filereadable(expand("$HOME/.bin/ctags")) | let g:tagbar_ctags_bin="$HOME/.bin/ctags" | endif
-if filereadable(expand("$HOME/.local/bin/ctags")) | let g:tagbar_ctags_bin="$HOME/.local/bin/ctags" | endif
+if filereadable(expand("$HOME/.bin/ctags"))
+    let g:tagbar_ctags_bin="$HOME/.bin/ctags"
+elseif filereadable(expand("$HOME/.local/bin/ctags"))
+    let g:tagbar_ctags_bin="$HOME/.local/bin/ctags"
+endif
+
 nmap <F5> :TagbarToggle<CR>
 let g:tagbar_autoclose = 0
 let g:tagbar_singleclick = 0
