@@ -11,7 +11,7 @@ fi
 [ -d $HOME/.bin ]       && export PATH=$HOME/.bin:"${PATH}"
 
 # upgrade bash if a preferential one exists
-if [ ${BASH_VERSINFO[0]} -ne 4 ] ; then
+if [ ${BASH_VERSINFO[0]} -ne 4 -a -n "$PS1" ]; then
     bash --login
     exit
 fi
