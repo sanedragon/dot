@@ -24,10 +24,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix ; then
     source /etc/bash_completion
 fi
 
-[ -n "$(which git-completion.sh)" ]    && source git-completion.sh
-[ -n "$(which bash-colors.sh)" ]       && source bash-colors.sh
-[ -n "$(which git-helpers.sh)" ]       && source git-helpers.sh
-[ -n "$(which work.sh)" ]              && source work.sh
+[ -n "$(which git-completion.sh 2> /dev/null)" ]    && source git-completion.sh
+[ -n "$(which bash-colors.sh 2> /dev/null)" ]       && source bash-colors.sh
+[ -n "$(which git-helpers.sh 2> /dev/null)" ]       && source git-helpers.sh
+[ -n "$(which work.sh 2> /dev/null)" ]              && source work.sh
 
 # ancillary paths
 
