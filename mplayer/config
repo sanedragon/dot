@@ -10,4 +10,4 @@ subpos="95"
 subalign="2"
 stop-xscreensaver="yes"
 font="Helvetica"
-
+cache="8192"

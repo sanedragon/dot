@@ -1,9 +1,6 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/powerline"]
-	path = vim/bundle/powerline
-	url = http://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
@@ -16,9 +13,6 @@
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
 	url = http://github.com/tpope/vim-markdown
-[submodule "vim/bundle/commentary"]
-	path = vim/bundle/commentary
-	url = http://github.com/tpope/vim-commentary
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
 	url = git://github.com/gregsexton/gitv.git
@@ -52,3 +46,42 @@
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = git://github.com/tomasr/molokai.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/bundle/ruby"]
+	path = vim/bundle/ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/bundle/neocomplcache"]
+	path = vim/bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = git://github.com/tsaleh/vim-supertab.git
+[submodule "vim/bundle/perlomni"]
+	path = vim/bundle/perlomni
+	url = git://github.com/c9s/perlomni.vim.git
+[submodule "vim/bundle/vim-powerline"]
+	path = vim/bundle/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://git.wicent.com/command-t.git
+[submodule "vim/bundle/dbext"]
+	path = vim/bundle/dbext
+	url = git://github.com/vim-scripts/dbext.vim.git
+[submodule "vim/bundle/solarized"]
+	path = vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/jellybean"]
+	path = vim/bundle/jellybean
+	url = git://github.com/nanotech/jellybeans.vim.git
+[submodule "vim/bundle/lucius"]
+	path = vim/bundle/lucius
+	url = git://github.com/vim-scripts/Lucius.git
+[submodule "vim/bundle/xoria256"]
+	path = vim/bundle/xoria256
+	url = https://github.com/vim-scripts/xoria256.vim
+[submodule "vim/bundle/superman"]
+	path = vim/bundle/superman
+	url = https://github.com/tristen/superman

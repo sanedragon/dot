@@ -13,6 +13,7 @@
     pager = less -FRXSM
     editor = vim
     preloadindex = true
+	excludesfile = ~/.gitignore_global
 [color]
     ui = auto
 [log]
@@ -61,3 +62,5 @@
     template = ~/.gitcommittemplate
 [difftool]
 	prompt = false
+[http]
+	sslVerify = false
