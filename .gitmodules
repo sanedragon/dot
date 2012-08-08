@@ -64,9 +64,6 @@
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
-	url = git://git.wicent.com/command-t.git
 [submodule "vim/bundle/dbext"]
 	path = vim/bundle/dbext
 	url = git://github.com/vim-scripts/dbext.vim.git
