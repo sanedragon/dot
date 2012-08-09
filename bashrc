@@ -10,7 +10,7 @@ fi
 [ -d $HOME/bin ]        && export PATH=$HOME/bin:"${PATH}"
 [ -d $HOME/.bin ]       && export PATH=$HOME/.bin:"${PATH}"
 
-# upgrade bash if a preferential one exists
+# upgrade bash if a preferential one exists (THIS IS DANGEROUS)
 if [ ${BASH_VERSINFO[0]} -ne 4 ] ; then
     bash --login
     exit

@@ -69,7 +69,7 @@ set guifont=Inconsolata:h13
 set cursorline
 "set cursorcolumn
 if exists('+colorcolumn') | set colorcolumn=80,120 | endif
-set showtabline=0
+set showtabline=1
 let loaded_matchparen = 0
 set fillchars+=fold:\─,diff:\─,vert:\ ,stl:\ ,stlnc:\ 
 
@@ -87,7 +87,7 @@ sign define breakPoint  linehl=breakPoint  text=>>
 sign define both        linehl=currentLine text=>>
 sign define empty       linehl=empty
 
-"##### whitespace #####
+"##### formatting #####
 
 set nowrap
 set whichwrap+=<>[]
@@ -96,6 +96,7 @@ set textwidth=80
 "set lbr
 "set showbreak=→
 set smartindent
+set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -109,10 +110,6 @@ set virtualedit=block
 set foldenable
 set foldmethod=manual
 set foldlevel=100 " Don't autofold anything
-"augroup vimrc
-"    au BufReadPre * setlocal foldmethod=syntax
-"    au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-"augroup END
 
 "##### searching #####
 
@@ -136,8 +133,10 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.py
 
 "##### status bar #####
 
-set laststatus=2
-set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
+if !exists('g:Powerline_loaded')
+    set laststatus=2
+    set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
+endif
 
 "##### keyboard mappings #####
 
