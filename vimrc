@@ -10,7 +10,9 @@ set number
 if has('unnamedplus')
     set clipboard=unnamedplus
 endif
-set relativenumber
+if exists('+relativenumber')
+    set relativenumber
+endif
 set numberwidth=4
 set ruler
 if has('persistent_undo')

@@ -52,6 +52,7 @@ export LESS='CMisnfS'
 export LESSCHARSET='utf-8'
 export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+export EDITOR=vim
 
 umask 002
 ssh-add &> /dev/null
