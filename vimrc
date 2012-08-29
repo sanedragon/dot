@@ -70,7 +70,7 @@ colorscheme xoria256
 set guifont=Inconsolata:h13
 set cursorline
 "set cursorcolumn
-if exists('+colorcolumn') | set colorcolumn=80,120 | endif
+if exists('+colorcolumn') | set colorcolumn=50,72,80,120 | endif
 set showtabline=1
 let loaded_matchparen = 0
 set fillchars+=fold:\─,diff:\─,vert:\ ,stl:\ ,stlnc:\ 
