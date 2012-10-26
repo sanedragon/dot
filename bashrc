@@ -28,6 +28,8 @@ fi
 [ -n "$(which bash-colors.sh 2> /dev/null)" ]       && source bash-colors.sh
 [ -n "$(which git-helpers.sh 2> /dev/null)" ]       && source git-helpers.sh
 [ -n "$(which work.sh 2> /dev/null)" ]              && source work.sh
+[ -n "$(which brew 2> /dev/null)" -a -f `brew --prefix`/etc/bash_completion ] &&
+    source `brew --prefix`/etc/bash_completion
 
 # ancillary paths
 
@@ -61,14 +63,26 @@ if [ -d ~/.ssh ]; then
     chmod 600 .ssh/* 2> /dev/null
 fi
 
+export PERLBREW_ROOT=/opt/perl
+source /opt/perl/etc/bashrc
+
 # Prompt
+
+function massage_pwd()
+{
+    :
+}
+
+export PROMPT_COMMAND=massage_pwd
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM='auto'
-export PS1="${BBlue}\h:${Color_Off}${BGreen}\w${Color_Off} \$(__git_ps1 \"${BPurple}(%s) ${Color_Off}\")${BIYellow}⚡${Color_Off} "
+export PS1="${BBlue}\h:${Color_Off}${BGreen}\${PWD}${Color_Off} \$(__git_ps1 \"${BPurple}(%s) ${Color_Off}\")${BIYellow}⚡${Color_Off} "
 
 # History
+
 export HISTFILESIZE=50000000
 export HISTSIZE=500000
 export HISTIGNORE='l:ls:la:ll:cd:w'
