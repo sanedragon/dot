@@ -1,6 +1,5 @@
 # Write your default config options here!
 
-sid="0"
 double="yes"
 ffactor="10"
 subfont-text-scale="3"
@@ -11,3 +10,6 @@ subalign="2"
 stop-xscreensaver="yes"
 font="Helvetica"
 cache="8192"
+display=":0"
+slang="en"
+fs="yes"
