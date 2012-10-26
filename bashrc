@@ -12,8 +12,7 @@ fi
 
 # upgrade bash if a preferential one exists (THIS IS DANGEROUS)
 if [ ${BASH_VERSINFO[0]} -ne 4 -a -n "$PS1" ]; then
-    bash --login
-    exit
+    exec bash --login
 fi
 
 # sources
