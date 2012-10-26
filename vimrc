@@ -2,6 +2,15 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+" Fix up rtp a bit to exclude rusty old default scripts if they exist
+let list = []
+for dir in pathogen#split(&rtp)
+    if dir !~# '/usr/share/vim/vimfiles'
+        call add(list, dir)
+    endif
+endfor
+let &rtp = pathogen#join(list)
+
 "##### general settings #####
 
 set nocompatible
