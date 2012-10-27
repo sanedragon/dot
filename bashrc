@@ -23,12 +23,16 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix ; then
     source /etc/bash_completion
 fi
 
+if [ -n "$(which brew 2> /dev/null)" ]; then
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+        source `brew --prefix`/etc/bash_completion
+    fi
+fi
+
 [ -n "$(which git-completion.sh 2> /dev/null)" ]    && source git-completion.sh
 [ -n "$(which bash-colors.sh 2> /dev/null)" ]       && source bash-colors.sh
 [ -n "$(which git-helpers.sh 2> /dev/null)" ]       && source git-helpers.sh
 [ -n "$(which work.sh 2> /dev/null)" ]              && source work.sh
-[ -n "$(which brew 2> /dev/null)" -a -f `brew --prefix`/etc/bash_completion ] &&
-    source `brew --prefix`/etc/bash_completion
 
 # ancillary paths
 
@@ -62,8 +66,10 @@ if [ -d ~/.ssh ]; then
     chmod 600 .ssh/* 2> /dev/null
 fi
 
-export PERLBREW_ROOT=/opt/perl
-source /opt/perl/etc/bashrc
+if [ -d /opt/perl ]; then
+    export PERLBREW_ROOT=/opt/perl
+    [ -f /opt/perl/etc/bashrc ] && source /opt/perl/etc/bashrc
+fi
 
 # Prompt
 
