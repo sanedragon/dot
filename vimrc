@@ -75,7 +75,7 @@ set ofu=syntaxcomplete#Complete
 
 syntax enable
 set background=dark
-colorscheme xoria256
+colorscheme tomorrow-night-eighties
 set guifont=Inconsolata:h13
 set cursorline
 "set cursorcolumn
