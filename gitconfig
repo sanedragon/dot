@@ -48,6 +48,14 @@
     upm = !sh -c 'git fetch --all && git rebase origin/master && git submodule update' -
     plog = !git lg
 	d = difftool
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
 [push]
     default = current
 [status]
