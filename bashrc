@@ -53,7 +53,7 @@ shopt -s cdable_vars        # cd to bash variables
 export LC_ALL="en_US.UTF-8"
 export TZ="America/Los_Angeles"
 export PAGER='less'
-export LESS='CMisnfS'
+export LESS='CMifS'
 export LESSCHARSET='utf-8'
 export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
