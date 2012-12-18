@@ -97,8 +97,6 @@ fi
 # set up ssh-agent if no identities are available
 ssh-add -l &> /dev/null
 if [ $? != 0 ]; then
-    eval $(ssh-agent)
     ssh-add
-    ssh-add -l
 fi
 
