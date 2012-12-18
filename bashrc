@@ -52,12 +52,17 @@ shopt -s cdable_vars        # cd to bash variables
 
 export LC_ALL="en_US.UTF-8"
 export TZ="America/Los_Angeles"
+export CLICOLOR=1
+export CLICOLOR_FORCE=1
 export PAGER='less'
-export LESS='CMifS'
+export LESS='CMifSR'
 export LESSCHARSET='utf-8'
-export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
+[ -x /usr/bin/lesspipe.sh ] && export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
+[ -x /usr/local/bin/lesspipe.sh ] && export LESSOPEN='|/usr/local/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/local/bin/lesspipe.sh ] && eval "$(SHELL=/bin/sh lesspipe.sh)"
 export EDITOR=vim
+export GIT_PAGER=less
 
 umask 002
 ssh-add &> /dev/null
