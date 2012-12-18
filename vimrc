@@ -2,6 +2,15 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+" Fix up rtp a bit to exclude rusty old default scripts if they exist
+let list = []
+for dir in pathogen#split(&rtp)
+    if dir !~# '/usr/share/vim/vimfiles'
+        call add(list, dir)
+    endif
+endfor
+let &rtp = pathogen#join(list)
+
 "##### general settings #####
 
 set nocompatible
@@ -10,9 +19,9 @@ set number
 if has('unnamedplus')
     set clipboard=unnamedplus
 endif
-if exists('+relativenumber')
-    set relativenumber
-endif
+"if exists('+relativenumber')
+"    set relativenumber
+"endif
 set numberwidth=4
 set ruler
 if has('persistent_undo')
@@ -66,14 +75,14 @@ set ofu=syntaxcomplete#Complete
 
 syntax enable
 set background=dark
-colorscheme xoria256
+colorscheme tomorrow-night-eighties
 set guifont=Inconsolata:h13
 set cursorline
 "set cursorcolumn
-if exists('+colorcolumn') | set colorcolumn=50,72,80,120 | endif
+"if exists('+colorcolumn') | set colorcolumn=50,72,80,120 | endif
 set showtabline=1
 let loaded_matchparen = 0
-set fillchars+=fold:\─,diff:\─,vert:\ ,stl:\ ,stlnc:\ 
+set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\ 
 
 " highlights
 

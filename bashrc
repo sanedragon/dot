@@ -12,8 +12,7 @@ fi
 
 # upgrade bash if a preferential one exists (THIS IS DANGEROUS TODO: FIX)
 if [ ${BASH_VERSINFO[0]} -ne 4 -a -n "$PS1" ]; then
-    bash --login
-    exit
+    exec bash --login
 fi
 
 # sources
@@ -22,6 +21,12 @@ fi
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix ; then
     source /etc/bash_completion
+fi
+
+if [ -n "$(which brew 2> /dev/null)" ]; then
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+        source `brew --prefix`/etc/bash_completion
+    fi
 fi
 
 [ -n "$(which git-completion.sh 2> /dev/null)" ]    && source git-completion.sh
@@ -48,13 +53,21 @@ shopt -s cdable_vars        # cd to bash variables
 export LC_ALL="en_US.UTF-8"
 export TZ="America/Los_Angeles"
 export PAGER='less'
-export LESS='CMisnfS'
+export LESS='CMifS'
 export LESSCHARSET='utf-8'
 export LESSOPEN='|/usr/bin/lesspipe.sh %s 2>&-'
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 export EDITOR=vim
 
 # Prompt
+
+function massage_pwd()
+{
+    :
+}
+
+export PROMPT_COMMAND=massage_pwd
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -62,6 +75,7 @@ export GIT_PS1_SHOWUPSTREAM='auto'
 export PS1="${BBlue}\h:${Color_Off}${BGreen}\w${Color_Off} \$(__git_ps1 \"${BPurple}(%s) ${Color_Off}\")${BIYellow}⚡${Color_Off} "
 
 # History
+
 export HISTFILESIZE=50000000
 export HISTSIZE=500000
 export HISTIGNORE='l:ls:la:ll:cd:w'

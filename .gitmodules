@@ -16,9 +16,6 @@
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
 	url = git://github.com/gregsexton/gitv.git
-[submodule "vim/bundle/skittles_berry"]
-	path = vim/bundle/skittles_berry
-	url = http://github.com/shawncplus/skittles_berry
 [submodule "vim/bundle/easymotion"]
 	path = vim/bundle/easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
@@ -34,9 +31,6 @@
 [submodule "vim/bundle/vim-css-color"]
 	path = vim/bundle/vim-css-color
 	url = git://github.com/ap/vim-css-color.git
-[submodule "vim/bundle/molokai"]
-	path = vim/bundle/molokai
-	url = git://github.com/tomasr/molokai.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
@@ -52,12 +46,9 @@
 [submodule "vim/bundle/dbext"]
 	path = vim/bundle/dbext
 	url = git://github.com/vim-scripts/dbext.vim.git
-[submodule "vim/bundle/jellybean"]
-	path = vim/bundle/jellybean
-	url = git://github.com/nanotech/jellybeans.vim.git
-[submodule "vim/bundle/lucius"]
-	path = vim/bundle/lucius
-	url = git://github.com/vim-scripts/Lucius.git
-[submodule "vim/bundle/xoria256"]
-	path = vim/bundle/xoria256
-	url = https://github.com/vim-scripts/xoria256.vim
+[submodule "vim/bundle/jedi-vim"]
+	path = vim/bundle/jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git
+[submodule "vim/bundle/scriptease"]
+	path = vim/bundle/scriptease
+	url = git://github.com/tpope/vim-scriptease.git
