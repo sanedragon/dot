@@ -10,7 +10,7 @@ fi
 [ -d $HOME/bin ]        && export PATH=$HOME/bin:"${PATH}"
 [ -d $HOME/.bin ]       && export PATH=$HOME/.bin:"${PATH}"
 
-# upgrade bash if a preferential one exists (THIS IS DANGEROUS)
+# upgrade bash if a preferential one exists (THIS IS DANGEROUS TODO: FIX)
 if [ ${BASH_VERSINFO[0]} -ne 4 -a -n "$PS1" ]; then
     exec bash --login
 fi
@@ -64,18 +64,6 @@ export LESSCHARSET='utf-8'
 export EDITOR=vim
 export GIT_PAGER=less
 
-umask 002
-ssh-add &> /dev/null
-if [ -d ~/.ssh ]; then
-    chmod 700 .ssh 2> /dev/null
-    chmod 600 .ssh/* 2> /dev/null
-fi
-
-if [ -d /opt/perl ]; then
-    export PERLBREW_ROOT=/opt/perl
-    [ -f /opt/perl/etc/bashrc ] && source /opt/perl/etc/bashrc
-fi
-
 # Prompt
 
 function massage_pwd()
@@ -98,4 +86,18 @@ export HISTSIZE=500000
 export HISTIGNORE='l:ls:la:ll:cd:w'
 export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
 export HISTCONTROL=ignoredups:ignorespace
+
+# SSH/identity/mode/permission/whatnot
+umask 002
+if [ -d ~/.ssh ]; then
+    chmod 700 .ssh 2> /dev/null
+    chmod 600 .ssh/* 2> /dev/null
+fi
+
+# set up ssh-agent if no identities are available
+if [ ssh-add -l &> /dev/null ]; then
+    eval $(ssh-agent)
+    ssh-add
+    ssh-add -l
+fi
 
