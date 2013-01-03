@@ -100,3 +100,4 @@ if [ $? != 0 ]; then
     ssh-add
 fi
 
+[ -d /usr/local/lib/python2.7/site-packages ] && export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
