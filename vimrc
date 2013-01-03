@@ -261,30 +261,6 @@ if has('autocmd')
                     \ endif
     augroup END
 
-    augroup CloseTagBarAndNERDTreeIfOnlyWindows
-        au!
-        au BufEnter *
-                    \ if exists("t:NERDTreeBufName")                    |
-                    \   if bufwinnr(t:NERDTreeBufName) != -1            |
-                    \       if winnr("$") == 1                          |
-                    \           q                                       |
-                    \       endif                                       |
-                    \   endif                                           |
-                    \ endif                                             |
-                    \ if bufwinnr('__Tagbar__') != -1                   |
-                    \     if winnr("$") == 1                            |
-                    \         q                                         |
-                    \     endif                                         |
-                    \     if winnr("$") == 2                            |
-                    \         if exists("t:NERDTreeBufName")            |
-                    \             if bufwinnr(t:NERDTreeBufName) != -1  |
-                    \                 qa                                |
-                    \             endif                                 |
-                    \         endif                                     |
-                    \     endif                                         |
-                    \ endif
-    augroup END
-
     if filereadable(expand("$HOME/bin/touch_handler_cgis"))
         augroup touchhandlers
             au!
