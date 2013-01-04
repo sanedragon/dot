@@ -1,4 +1,7 @@
-" Pathogen stuff first
+" =============================================================================
+" Pathogen
+" =============================================================================
+
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -11,7 +14,9 @@ for dir in pathogen#split(&rtp)
 endfor
 let &rtp = pathogen#join(list)
 
-"##### general settings #####
+" =============================================================================
+" general settings
+" =============================================================================
 
 set nocompatible
 set encoding=utf-8
@@ -70,8 +75,11 @@ filetype plugin indent on
 set ofu=syntaxcomplete#Complete
 "set spell
 "set spelllang=en_us
+set autoread
 
-"##### appearance #####
+" =============================================================================
+" appearance
+" =============================================================================
 
 syntax enable
 set background=dark
@@ -82,9 +90,11 @@ set cursorline
 "if exists('+colorcolumn') | set colorcolumn=50,72,80,120 | endif
 set showtabline=1
 let loaded_matchparen = 0
-set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\ 
+set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\
 
+" =============================================================================
 " highlights
+" =============================================================================
 
 hi clear ColorColumn
 hi link ColorColumn CursorLine
@@ -98,7 +108,9 @@ sign define breakPoint  linehl=breakPoint  text=>>
 sign define both        linehl=currentLine text=>>
 sign define empty       linehl=empty
 
-"##### formatting #####
+" =============================================================================
+" formatting
+" =============================================================================
 
 set nowrap
 set whichwrap+=<>[]
@@ -116,13 +128,17 @@ set list listchars=tab:▸\ ,trail:·",eol:¬
 filetype indent on
 set virtualedit=block
 
-"##### folding #####
+" =============================================================================
+" folding
+" =============================================================================
 
 set foldenable
 set foldmethod=manual
 set foldlevel=100 " Don't autofold anything
 
-"##### searching #####
+" =============================================================================
+" searching
+" =============================================================================
 
 nnoremap / /\v
 vnoremap / /\v
@@ -136,20 +152,26 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-"##### tab completion #####
+" =============================================================================
+" tab completion
+" =============================================================================
 
 set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.pyc,*.DS_Store,*.db
 
-"##### status bar #####
+" =============================================================================
+" status bar
+" =============================================================================
 
 if !exists('g:Powerline_loaded')
     set laststatus=2
     set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 endif
 
-"##### keyboard mappings #####
+" =============================================================================
+" keyboard mappings
+" =============================================================================
 
 nnoremap <silent> } :let @1=@/<CR>/^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
 nnoremap <silent> { :let @1=@/<CR>?^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
@@ -233,7 +255,9 @@ vnoremap <C-a> :call Incr()<CR>
 noremap <MiddleMouse> <LeftMouse><Esc><C-V>
 noremap <MiddleDrag> <LeftDrag>
 
-"##### auto commands #####
+" =============================================================================
+" auto commands
+" =============================================================================
 
 if has('autocmd')
     " settings immediately take effect
@@ -269,13 +293,22 @@ if has('autocmd')
     endif
 endif
 
-"##### RTK-specific #####
+" =============================================================================
+" RTK
+" =============================================================================
 
 if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
     source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
 endif
 
-" workaround for work
+" workarounds
 au! BufEnter *
 let $TEST_DB=1
+
+
+" =============================================================================
+" NERDTree settings
+" =============================================================================
+
+let NERDTreeHijackNetrw=1
 
