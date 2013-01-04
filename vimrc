@@ -157,6 +157,9 @@ nnoremap <silent> { :let @1=@/<CR>?^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
 " NERDTreeToggle
 noremap <leader>n :NERDTreeToggle<CR>
 
+" Tagbar
+noremap <leader>t :TagbarToggle<CR>
+
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -172,9 +175,6 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 " toggle special characters
 nmap <leader>l :set invlist!<CR>
 nmap <leader>p :set invpaste!<CR>
-
-nnoremap <silent> <Leader>t :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
 " Prev/Next Buffer
 nmap <C-n> :bn<CR>
