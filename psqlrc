@@ -3,7 +3,7 @@
 \set ON_ERROR_ROLLBACK on
 \set ON_ERROR_STOP on
 \set HISTFILE ~/.psql_history- :HOST - :DBNAME
-\set HISTSIZE 100000
+\set HISTSIZE 500000
 \timing
 \encoding unicode
 \set ECHO_HIDDEN 1

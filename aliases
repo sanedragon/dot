@@ -9,7 +9,7 @@ if [[ -e '/usr/bin/htop' ]]; then alias top='/usr/bin/htop'; fi
 alias vi='vim'
 
 # ls aliases
-if ls --version 2> /dev/null | grep -q 'GNU coreutils'
+if ls --version 2> /dev/null | grep -q 'coreutils'
 then
   export GREP_OPTIONS='--color=auto'
   alias ls="ls --color=auto --classify --block-size=\'1"
