@@ -48,7 +48,7 @@ set magic
 set showmode
 set showcmd
 set showmatch
-set history=100
+set history=5000
 set notitle
 set ttyfast
 "set ttyscroll=0
