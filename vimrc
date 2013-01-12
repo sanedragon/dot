@@ -1,5 +1,5 @@
 " =============================================================================
-" Pathogen
+" Pathogen (initial setup)
 " =============================================================================
 
 call pathogen#infect()
@@ -65,11 +65,6 @@ set splitbelow
 if has('mouse')
     set mouse=a
     set mousemodel=popup_setpos
-    map <F10> :set paste<CR>
-    map <F11> :set nopaste<CR>
-    imap <F10> <C-O>:set paste<CR>
-    imap <F11> <nop>
-    set pastetoggle=<F11>
 endif
 set viminfo^=%
 filetype plugin indent on
@@ -77,7 +72,10 @@ set ofu=syntaxcomplete#Complete
 "set spell
 "set spelllang=en_us
 
+
+" =============================================================================
 " appearance
+" =============================================================================
 
 syntax enable
 set background=dark
@@ -90,7 +88,10 @@ set showtabline=1
 let loaded_matchparen = 0
 set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\
 
+
+" =============================================================================
 " highlights
+" =============================================================================
 
 hi clear ColorColumn
 hi link ColorColumn CursorLine
@@ -104,7 +105,10 @@ sign define breakPoint  linehl=breakPoint  text=>>
 sign define both        linehl=currentLine text=>>
 sign define empty       linehl=empty
 
+
+" =============================================================================
 " formatting
+" =============================================================================
 
 set nowrap
 set whichwrap+=<>[]
@@ -122,13 +126,19 @@ set list listchars=tab:▸\ ,trail:·",eol:¬
 filetype indent on
 set virtualedit=block
 
+
+" =============================================================================
 " folding
+" =============================================================================
 
 set foldenable
 set foldmethod=manual
 set foldlevel=100 " Don't autofold anything
 
+
+" =============================================================================
 " searching
+" =============================================================================
 
 nnoremap / /\v
 vnoremap / /\v
@@ -169,8 +179,9 @@ endif
 nnoremap <silent> } :let @1=@/<CR>/^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
 nnoremap <silent> { :let @1=@/<CR>?^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
 
-" NERDTreeToggle
-noremap <leader>n :NERDTreeToggle<CR>
+" folding (if enabled)
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
+vnoremap <Space> zf
 
 " clean trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -186,10 +197,6 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 " toggle special characters
 nmap <leader>l :set invlist!<CR>
-nmap <leader>p :set invpaste!<CR>
-
-nnoremap <silent> <Leader>t :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
 " Prev/Next Buffer
 nmap <C-n> :bn<CR>
@@ -210,7 +217,12 @@ nnoremap <leader>/ :let @/ = ""<CR>
 " display unprintable characters
 nnoremap <F2> :set list!<CR>
 
+" toggle spellcheck
 nnoremap <F4> :set spell!<CR>
+
+" toggle paste mode
+"nmap <leader>p :set invpaste!<CR>
+set pastetoggle=<F5>
 
 " Locally (local to block) rename a variable
 function! Refactor()
@@ -219,19 +231,6 @@ function! Refactor()
     call inputrestore()
 endfunction
 nnoremap <Leader>rf "zyiw:call Refactor()<cr>mx:silent! norm gd<cr>[{V%:s/<C-R>//<c-r>z/g<cr>`x
-
-" folding (if enabled)
-inoremap <F7> <C-O>za
-nnoremap <F7> za
-onoremap <F7> <C-C>za
-vnoremap <F7> zf
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':'l')<CR>
-vnoremap <Space> zf
-
-" Make C-w o (only window) reversible by opening a tab
-nnoremap <C-W>O :tabnew %<CR>
-nnoremap <C-W>o :tabnew %<CR>
-nnoremap <C-W><C-O> :tabnew %<CR>
 
 " Increment a visual selection (like a column of numbers)
 function! Incr()
@@ -306,4 +305,56 @@ let $TEST_DB=1
 " =============================================================================
 
 let NERDTreeHijackNetrw=1
+noremap <leader>n :NERDTreeToggle<CR>
 
+
+" =============================================================================
+" CtrlP settings
+" =============================================================================
+
+noremap <leader>p :CtrlP<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+
+
+" =============================================================================
+" TagBar settings
+" =============================================================================
+
+noremap <leader>t :TagbarToggle<CR>
+noremap <F8> :TagbarToggle<CR>
+
+
+" =============================================================================
+" NeoComplCache settings
+" =============================================================================
+
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underscore completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Sets minimum char length of syntax keyword.
+let g:neocomplcache_min_syntax_length = 3
+
+" Enable omni completion
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType perl setlocal omnifunc=perlcomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
