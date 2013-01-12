@@ -39,6 +39,10 @@ fi
 [ -d $HOME/work ]       && export CDPATH=$HOME/work
 [ -d /usr/local/lib/python2.7/site-packages ] && export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
+# vim directories
+mkdir -p ~/.cache/vim/undo; mkdir -p ~/.cache/vim/backup; mkdir -p ~/.cache/vim/swap
+
+
 # settings
 
 shopt -s histappend
