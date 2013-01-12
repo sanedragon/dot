@@ -28,7 +28,6 @@ set number
 "    set relativenumber
 "endif
 set numberwidth=4
-set ruler
 if exists('+cryptmethod')
     set cryptmethod=blowfish
 endif
@@ -137,6 +136,7 @@ if has('persistent_undo')
     endif
 endif
 
+
 " =============================================================================
 " folding
 " =============================================================================
@@ -184,15 +184,35 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.py
 " status bar
 " =============================================================================
 
-if !exists('g:Powerline_loaded')
+if has('statusline')
     set laststatus=2
-    set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
+    set statusline=%<%f\ " Filename
+    set statusline+=%w%h%m%r " Options
+    set statusline+=%{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%Y] " filetype
+    set statusline+=\ [%{getcwd()}] " current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
+endif
+
+
+" =============================================================================
+" status bar
+" =============================================================================
+
+if has('cmdline_info')
+    set ruler " show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+    set showcmd " show partial commands in status line and selected characters/lines in visual mode
 endif
 
 
 " =============================================================================
 " keyboard mappings
 " =============================================================================
+
+" Wrapped lines goes down/up to next row, rather than next line in file.
+nnoremap j gj
+nnoremap k gk
 
 nnoremap <silent> } :let @1=@/<CR>/^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
 nnoremap <silent> { :let @1=@/<CR>?^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
@@ -237,7 +257,7 @@ nnoremap <F2> :set list!<CR>
 nnoremap <F4> :set spell!<CR>
 
 " toggle paste mode
-"nmap <leader>p :set invpaste!<CR>
+nnoremap <F5> :set invpaste!<CR>
 set pastetoggle=<F5>
 
 " Locally (local to block) rename a variable
