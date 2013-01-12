@@ -340,8 +340,20 @@ let $TEST_DB=1
 " NERDTree settings
 " =============================================================================
 
-let NERDTreeHijackNetrw=1
 noremap <leader>n :NERDTreeToggle<CR>
+noremap <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+noremap <leader>e :NERDTreeFind<CR>
+noremap <leader>nt :NERDTreeFind<CR>
+
+let NERDTreeHijackNetrw=1
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 
 " =============================================================================
@@ -365,6 +377,32 @@ noremap <F8> :TagbarToggle<CR>
 " =============================================================================
 
 let g:jedi#squelch_py_warning = 1
+
+
+" =============================================================================
+" Tabular
+" =============================================================================
+
+nnoremap   <Leader>a        :Tabularize   / /<CR>
+vnoremap   <Leader>a        :Tabularize   / /<CR>
+
+nnoremap   <Leader>a&       :Tabularize   /&<CR>
+vnoremap   <Leader>a&       :Tabularize   /&<CR>
+
+nnoremap   <Leader>a=       :Tabularize   /=<CR>
+vnoremap   <Leader>a=       :Tabularize   /=<CR>
+
+nnoremap   <Leader>a:       :Tabularize   /:<CR>
+vnoremap   <Leader>a:       :Tabularize   /:<CR>
+
+nnoremap   <Leader>a::      :Tabularize   /:\zs<CR>
+vnoremap   <Leader>a::      :Tabularize   /:\zs<CR>
+
+nnoremap   <Leader>a,       :Tabularize   /,<CR>
+vnoremap   <Leader>a,       :Tabularize   /,<CR>
+
+nnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
+vnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
 
 
 " =============================================================================
