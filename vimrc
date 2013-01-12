@@ -24,9 +24,6 @@ set encoding=utf-8
 set shortmess+=I
 set completeopt+=preview,menu
 set number
-if has('unnamedplus')
-    set clipboard=unnamedplus
-endif
 "if exists('+relativenumber')
 "    set relativenumber
 "endif
@@ -122,6 +119,17 @@ set nowrap
 "set expandtab
 "filetype indent on
 set virtualedit+=block,onemore
+
+
+" =============================================================================
+" clipboard
+" =============================================================================
+
+if has ('x') && has ('gui') " on Linux use + register for copy-paste
+    set clipboard=unnamedplus
+elseif has ('gui') " one mac and windows, use * register for copy-paste
+    set clipboard=unnamed
+endif
 
 
 " =============================================================================
