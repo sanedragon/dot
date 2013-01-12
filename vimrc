@@ -21,6 +21,8 @@ let &rtp = pathogen#join(list)
 
 set nocompatible
 set encoding=utf-8
+set shortmess+=I
+set completeopt+=preview,menu
 set number
 if has('unnamedplus')
     set clipboard=unnamedplus
@@ -31,7 +33,7 @@ endif
 set numberwidth=4
 set ruler
 if has('persistent_undo')
-    set undodir=~/.vim/local/undo/
+"    set undodir=~/.vim/local/undo/
     set undofile
     set undolevels=100000
     if exists('+undoreload')
@@ -49,44 +51,41 @@ set magic
 set showmode
 set showcmd
 set showmatch
-set matchtime=5
 set history=100
 set notitle
 set ttyfast
 "set ttyscroll=0
-set scrolloff=0
+"set scrolloff=0
 set nostartofline
-set backup
-set backupdir=~/.vim/local/backup/
-set directory=~/.vim/local/
-set autowrite
-set backspace=indent,eol,start
+"set backup
+"set backspace=indent,eol,start
 set splitbelow
 if has('mouse')
     set mouse=a
     set mousemodel=popup_setpos
 endif
 set viminfo^=%
-filetype plugin indent on
-set ofu=syntaxcomplete#Complete
+"filetype plugin indent on
 "set spell
-"set spelllang=en_us
 
 
 " =============================================================================
 " appearance
 " =============================================================================
 
-syntax enable
 set background=dark
 colorscheme tomorrow-night-eighties
 set guifont=Inconsolata:h13
 set cursorline
 "set cursorcolumn
 "if exists('+colorcolumn') | set colorcolumn=50,72,80,120 | endif
-set showtabline=1
-let loaded_matchparen = 0
-set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\
+
+" using vim-sensible
+"set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\
+"set list listchars=tab:▸\ ,trail:·",eol:¬
+"set showbreak=→
+
+"syntax enable
 
 
 " =============================================================================
@@ -111,20 +110,18 @@ sign define empty       linehl=empty
 " =============================================================================
 
 set nowrap
-set whichwrap+=<>[]
-set textwidth=80
+"set whichwrap+=<>[]
+"set textwidth=80
 "set formatoptions=tcqron1
 "set lbr
-"set showbreak=→
-set smartindent
-set smarttab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set list listchars=tab:▸\ ,trail:·",eol:¬
-filetype indent on
-set virtualedit=block
+"set smartindent
+"set smarttab
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4
+"set expandtab
+"filetype indent on
+set virtualedit+=block,onemore
 
 
 " =============================================================================
@@ -154,11 +151,19 @@ vnoremap <tab> %
 
 
 " =============================================================================
-" tab completion
+" spelling
+" =============================================================================
+
+"set spell
+set spelllang=en_us
+
+
+" =============================================================================
+" menu
 " =============================================================================
 
 set wildmenu
-set wildmode=list:longest,list:full
+set wildmode=list:longest
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.pyc,*.DS_Store,*.db
 
 
@@ -208,8 +213,6 @@ nmap <C-l> zL
 nmap <C-j> <C-d>
 nmap <C-k> <C-u>
 
-" highlight search matches
-nmap <F3> :set hls!<CR>
 
 " clear old search
 nnoremap <leader>/ :let @/ = ""<CR>
@@ -328,7 +331,7 @@ noremap <F8> :TagbarToggle<CR>
 " NeoComplCache settings
 " =============================================================================
 
-let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup = 0
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 " Use camel case completion.
