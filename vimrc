@@ -29,14 +29,6 @@ set number
 "endif
 set numberwidth=4
 set ruler
-if has('persistent_undo')
-"    set undodir=~/.vim/local/undo/
-    set undofile
-    set undolevels=100000
-    if exists('+undoreload')
-        set undoreload=100000
-    endif
-endif
 if exists('+cryptmethod')
     set cryptmethod=blowfish
 endif
@@ -131,6 +123,19 @@ elseif has ('gui') " one mac and windows, use * register for copy-paste
     set clipboard=unnamed
 endif
 
+
+" =============================================================================
+" undo
+" =============================================================================
+
+if has('persistent_undo')
+"    set undodir=~/.vim/local/undo/ " set by sensible
+    set undofile
+    set undolevels=1000
+    if exists('+undoreload')
+        set undoreload=10000
+    endif
+endif
 
 " =============================================================================
 " folding
