@@ -2,11 +2,21 @@
 " Pathogen (initial setup)
 " =============================================================================
 
+" settings
+
+let g:pathogen_disabled = []
+if v:version < 702
+    let g:pathogen_disabled += ['tagbar', 'neocomplcache', 'jedi-vim']
+endif
+
+" bring in Pathogen
+
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 execute pathogen#helptags()
 
-" Fix up rtp a bit to exclude rusty old default scripts if they exist
+" fix up rtp a bit to exclude rusty old default scripts if they exist
+
 let list = []
 for dir in pathogen#split(&rtp)
     if dir !~# '/usr/share/vim/vimfiles'
@@ -336,13 +346,6 @@ endif
 au! BufEnter *
 let $TEST_DB=1
 
-" Pathogen settings
-"
-let g:pathogen_disabled = []
-if v:version < 702
-    g:pathogen_disabled += ['tagbar', 'neocomplcache', 'jedi-vim']
-endif
-
 
 " =============================================================================
 " NERDTree settings
@@ -417,33 +420,33 @@ vnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
 " NeoComplCache settings
 " =============================================================================
 
-let g:neocomplcache_enable_at_startup = 0
+"let g:neocomplcache_enable_at_startup = 0
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underscore completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Sets minimum char length of syntax keyword.
-let g:neocomplcache_min_syntax_length = 3
+"let g:neocomplcache_enable_smart_case = 1
+"" Use camel case completion.
+"let g:neocomplcache_enable_camel_case_completion = 1
+"" Use underscore completion.
+"let g:neocomplcache_enable_underbar_completion = 1
+"" Sets minimum char length of syntax keyword.
+"let g:neocomplcache_min_syntax_length = 3
 
-" Enable omni completion
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType perl setlocal omnifunc=perlcomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"" Enable omni completion
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType perl setlocal omnifunc=perlcomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplcache#close_popup()
+"inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
