@@ -2,8 +2,9 @@
 " Pathogen (initial setup)
 " =============================================================================
 
-call pathogen#infect()
-call pathogen#helptags()
+runtime bundle/pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+execute pathogen#helptags()
 
 " Fix up rtp a bit to exclude rusty old default scripts if they exist
 let list = []
