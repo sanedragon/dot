@@ -336,6 +336,13 @@ endif
 au! BufEnter *
 let $TEST_DB=1
 
+" Pathogen settings
+"
+let g:pathogen_disabled = []
+if v:version < 703
+    g:pathogen_disabled += ['']
+endif
+
 
 " =============================================================================
 " NERDTree settings
