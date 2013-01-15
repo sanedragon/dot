@@ -339,8 +339,8 @@ let $TEST_DB=1
 " Pathogen settings
 "
 let g:pathogen_disabled = []
-if v:version < 703
-    g:pathogen_disabled += ['']
+if v:version < 702
+    g:pathogen_disabled += ['tagbar', 'neocomplcache', 'jedi-vim']
 endif
 
 
