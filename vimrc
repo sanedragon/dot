@@ -72,6 +72,7 @@ set viminfo^=%
 " appearance
 " =============================================================================
 
+set t_Co=256
 set background=dark
 colorscheme tomorrow-night-eighties
 set guifont=Inconsolata:h13
