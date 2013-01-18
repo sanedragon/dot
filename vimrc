@@ -379,6 +379,10 @@ noremap <leader>b :CtrlPBuffer<CR>
 noremap <leader>t :TagbarToggle<CR>
 noremap <F8> :TagbarToggle<CR>
 
+if filereadable(expand('~/.local/bin/ctags'))
+    let g:tagbar_ctags_bin = expand('~/.local/bin/ctags')
+endif
+
 
 " =============================================================================
 " Jedi-vim settings
