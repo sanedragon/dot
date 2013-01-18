@@ -33,7 +33,7 @@ fi
 if [ -n "$(which git-completion.sh 2> /dev/null)" ]; then
     source git-completion.sh
 else
-    [ -n /usr/share/git-core/git-completion.bash ] && source /usr/share/git-core/git-completion.bash
+    [ -x /usr/share/git-core/git-completion.bash ] && source /usr/share/git-core/git-completion.bash
 fi
 
 [ -n "$(which bash-colors.sh 2> /dev/null)" ]       && source bash-colors.sh
