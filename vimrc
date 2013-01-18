@@ -128,7 +128,7 @@ set virtualedit+=block,onemore
 " clipboard
 " =============================================================================
 
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 
 
 " =============================================================================
