@@ -128,11 +128,7 @@ set virtualedit+=block,onemore
 " clipboard
 " =============================================================================
 
-if has ('x') && has ('gui') " on Linux use + register for copy-paste
-    set clipboard=unnamedplus
-elseif has ('gui') " one mac and windows, use * register for copy-paste
-    set clipboard=unnamed
-endif
+set clipboard=unnamedplus
 
 
 " =============================================================================
