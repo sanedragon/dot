@@ -29,7 +29,13 @@ if [ -n "$(which brew 2> /dev/null)" ]; then
     fi
 fi
 
-[ -n "$(which git-completion.sh 2> /dev/null)" ]    && source git-completion.sh
+
+if [ -n "$(which git-completion.sh 2> /dev/null)" ]; then
+    source git-completion.sh
+else
+    [ -n /usr/share/git-core/git-completion.bash ] && source /usr/share/git-core/git-completion.bash
+fi
+
 [ -n "$(which bash-colors.sh 2> /dev/null)" ]       && source bash-colors.sh
 [ -n "$(which git-helpers.sh 2> /dev/null)" ]       && source git-helpers.sh
 [ -n "$(which work.sh 2> /dev/null)" ]              && source work.sh
@@ -40,7 +46,7 @@ fi
 [ -d /usr/local/lib/python2.7/site-packages ] && export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # vim directories
-mkdir -p ~/.cache/vim/undo; mkdir -p ~/.cache/vim/backup; mkdir -p ~/.cache/vim/swap
+[ -d  ~/.cache/vim ] || mkdir -p ~/.cache/vim/{swap,backup,undo}
 
 
 # settings
