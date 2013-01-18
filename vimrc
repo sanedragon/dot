@@ -382,6 +382,7 @@ noremap <F8> :TagbarToggle<CR>
 if filereadable(expand('~/.local/bin/ctags'))
     let g:tagbar_ctags_bin = expand('~/.local/bin/ctags')
 endif
+let g:tagbar_autoclose = 0
 
 
 " =============================================================================
