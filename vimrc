@@ -74,7 +74,6 @@ set viminfo^=%
 
 set t_Co=256
 set background=dark
-if has('transparency') | set transparency=5 | endif
 colorscheme tomorrow-night-eighties
 set guifont=Inconsolata:h13
 set cursorline
@@ -346,8 +345,8 @@ let $TEST_DB=1
 
 noremap <leader>n :NERDTreeToggle<CR>
 noremap <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-noremap <leader>e :NERDTreeFind<CR>
-noremap <leader>nt :NERDTreeFind<CR>
+"noremap <leader>e :NERDTreeFind<CR>
+"noremap <leader>nt :NERDTreeFind<CR>
 
 let NERDTreeHijackNetrw=1
 let NERDTreeShowBookmarks=1
@@ -448,3 +447,11 @@ vnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
 "inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+
+" =============================================================================
+" Solarized settings
+" =============================================================================
+
+let g:solarized_termcolors = 256
+
