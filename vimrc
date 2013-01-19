@@ -60,6 +60,7 @@ set nostartofline
 "set backup
 "set backspace=indent,eol,start
 set splitbelow
+set switchbuf=useopen,usetab
 if has('mouse')
     set mouse=a
     set mousemodel=popup_setpos
