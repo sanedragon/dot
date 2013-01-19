@@ -54,7 +54,8 @@ set history=5000
 set notitle
 set ttyfast
 "set ttyscroll=0
-"set scrolloff=0
+set scrolloff=3
+set sidescrolloff=5
 set nostartofline
 "set backup
 "set backspace=indent,eol,start
@@ -454,4 +455,4 @@ vnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
 " =============================================================================
 
 let g:solarized_termcolors = 256
-
+let g:solarized_style      = "dark"
