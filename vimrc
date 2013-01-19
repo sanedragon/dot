@@ -223,6 +223,11 @@ endif
 nnoremap j gj
 nnoremap k gk
 
+" retain selection when changing indent level
+vnoremap < <gv
+vnoremap > >gv
+
+
 nnoremap <silent> } :let @1=@/<CR>/^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
 nnoremap <silent> { :let @1=@/<CR>?^\s*$<CR>:nohls<CR>:let @/=@1<CR>:set hls<CR>
 
