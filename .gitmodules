@@ -82,3 +82,6 @@
 [submodule "vim/bundle/yankring"]
 	path = vim/bundle/yankring
 	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "vim/bundle/irblack"]
+	path = vim/bundle/irblack
+	url = git://github.com/wgibbs/vim-irblack.git
