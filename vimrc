@@ -74,6 +74,7 @@ set viminfo^=%
 
 set t_Co=256
 set background=dark
+if has('transparency') | set transparency=5 | endif
 colorscheme tomorrow-night-eighties
 set guifont=Inconsolata:h13
 set cursorline
@@ -307,11 +308,6 @@ if has('autocmd')
     augroup redrawonresize
         au!
         au VimResized * redraw!
-    augroup END
-
-    augroup writeonfocus
-        au!
-        au FocusLost * :wa
     augroup END
 
     augroup rememberlastcursorpos
