@@ -67,6 +67,7 @@ set nostartofline
 "set backup
 "set backspace=indent,eol,start
 set splitbelow
+set splitright
 set switchbuf=useopen,usetab
 if has('mouse')
     set mouse=a
