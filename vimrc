@@ -82,6 +82,7 @@ set viminfo^=%
 " appearance
 " =============================================================================
 
+syntax enable
 set t_Co=256
 set background=dark
 colorscheme tomorrow-night-eighties
@@ -92,10 +93,9 @@ set cursorline
 
 " using vim-sensible
 "set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\
-"set list listchars=tab:▸\ ,trail:·",eol:¬
+set list listchars=tab:▸\ ,trail:·",eol:¬,nbsp:␣,extends:›,precedes:‹
 "set showbreak=→
-
-"syntax enable
+set fillchars=vert:│",stlnc:─╎║┃
 
 
 " =============================================================================
