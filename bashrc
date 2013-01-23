@@ -43,10 +43,12 @@ fi
 # ancillary paths
 
 [ -d $HOME/work ]       && export CDPATH=$HOME/work
-[ -d /usr/local/lib/python2.7/site-packages ] && export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+
+# Python settings
+export PYTHONDONTWRITEBYTECODE=1
 
 # vim directories
-[ -d  ~/.cache/vim ] || mkdir -p ~/.cache/vim/{swap,backup,undo}
+[ -d ~/.cache/vim ] || mkdir -p ~/.cache/vim/{swap,backup,undo}
 
 
 # settings
