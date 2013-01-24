@@ -64,8 +64,11 @@ set ttyfast
 set scrolloff=3
 set sidescrolloff=5
 set nostartofline
-"set backup
-"set backspace=indent,eol,start
+set backup
+set writebackup
+set backupdir=~/.vim/local/backup//
+set directory=~/.vim/local/swap//
+set backspace=indent,eol,start
 set splitbelow
 set splitright
 set switchbuf=useopen,usetab
@@ -89,13 +92,11 @@ colorscheme tomorrow-night-eighties
 set guifont=Inconsolata:h13
 set cursorline
 "set cursorcolumn
-"if exists('+colorcolumn') | set colorcolumn=50,72,80,120 | endif
+if exists('+colorcolumn') | set colorcolumn+=80,120 | endif
 
-" using vim-sensible
-"set fillchars+=fold:\·,diff:\·,vert:\ ,stl:\ ,stlnc:\
 set list listchars=tab:▸\ ,trail:·",eol:¬,nbsp:␣,extends:›,precedes:‹
+set fillchars+=vert:│",stlnc:─╎║┃,fold:\·,diff:\·,stl:\
 "set showbreak=→
-set fillchars=vert:│",stlnc:─╎║┃
 
 
 " =============================================================================
@@ -120,17 +121,17 @@ sign define empty       linehl=empty
 " =============================================================================
 
 set nowrap
-"set whichwrap+=<>[]
-"set textwidth=80
-"set formatoptions=tcqron1
-"set lbr
-"set smartindent
-"set smarttab
-"set tabstop=4
-"set shiftwidth=4
-"set softtabstop=4
-"set expandtab
-"filetype indent on
+set whichwrap+=<>[]
+set textwidth=80
+set formatoptions=tcqron1
+set lbr
+set smartindent
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+filetype indent on
 set virtualedit+=block,onemore
 
 
@@ -146,7 +147,7 @@ set clipboard=unnamed,unnamedplus
 " =============================================================================
 
 if has('persistent_undo')
-"    set undodir=~/.vim/local/undo/ " set by sensible
+    set undodir=~/.vim/local/undo/
     set undofile
     set undolevels=1000
     if exists('+undoreload')
@@ -190,7 +191,7 @@ set spelllang=en_us
 
 
 " =============================================================================
-" menu
+" menu (for command tab-complete)
 " =============================================================================
 
 set wildmenu
@@ -302,9 +303,9 @@ function! Incr()
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 
-" block select with middle-click-and-drag
-noremap <MiddleMouse> <LeftMouse><Esc><C-V>
-noremap <MiddleDrag> <LeftDrag>
+" block select with control-click-and-drag
+noremap <C-LeftMouse> <LeftMouse><Esc><C-V>
+noremap <C-LeftDrag>  <LeftDrag>
 
 
 " =============================================================================
@@ -313,31 +314,24 @@ noremap <MiddleDrag> <LeftDrag>
 
 if has('autocmd')
     " settings immediately take effect
-    augroup instantsettings
+    augroup InstantSettings
         au!
         au BufWritePost ~/.vimrc :source ~/.vimrc
         au BufLeave ~/.vimrc :source ~/.vimrc
     augroup END
 
-    augroup redrawonresize
+    augroup RedrawOnResize
         au!
         au VimResized * redraw!
     augroup END
 
-    augroup rememberlastcursorpos
+    augroup RememberLastCursorPos
         au!
         au BufReadPost *
                     \ if line("'\"") > 0 && line ("'\"") <= line("$")   |
                     \   exe "normal! g'\""                              |
                     \ endif
     augroup END
-
-    if filereadable(expand("$HOME/bin/touch_handler_cgis"))
-        augroup touchhandlers
-            au!
-            au BufWritePost * let output = system(expand("$HOME/bin/touch_handler_cgis"))
-        augroup END
-    endif
 endif
 
 
@@ -349,6 +343,13 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
     source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
 endif
 
+if filereadable(expand("$HOME/bin/touch_handler_cgis"))
+    augroup TouchHandlerScript
+        au!
+        au BufWritePost * let output = system(expand("$HOME/bin/touch_handler_cgis"))
+    augroup END
+endif
+
 " workarounds
 au! BufEnter *
 let $TEST_DB=1
@@ -358,8 +359,8 @@ let $TEST_DB=1
 " NERDTree settings
 " =============================================================================
 
-noremap <leader>n :NERDTreeToggle<CR>
 noremap <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+noremap <F7>  :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 "noremap <leader>e :NERDTreeFind<CR>
 "noremap <leader>nt :NERDTreeFind<CR>
 
@@ -380,13 +381,15 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 noremap <leader>p :CtrlP<CR>
 noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>u :CtrlPUndo<CR>
+noremap <leader>t :CtrlPTag<CR>
+noremap <leader>m :CtrlPMRUFiles<CR>
 
 
 " =============================================================================
 " TagBar settings
 " =============================================================================
 
-noremap <leader>t :TagbarToggle<CR>
 noremap <F8> :TagbarToggle<CR>
 
 if filereadable(expand('~/.local/bin/ctags'))
@@ -450,19 +453,6 @@ vnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
 "autocmd FileType perl setlocal omnifunc=perlcomplete#Complete
 "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"" Recommended key-mappings.
-"" <CR>: close popup and save indent.
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-"" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-y>  neocomplcache#close_popup()
-"inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
 
 " =============================================================================
 " Solarized settings
@@ -470,3 +460,4 @@ vnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
 
 let g:solarized_termcolors = 256
 let g:solarized_style      = "dark"
+
