@@ -343,7 +343,7 @@ if filereadable('/usr/local/etc/vimrc_files/reasonably_stable_mappings.vim')
     source /usr/local/etc/vimrc_files/reasonably_stable_mappings.vim
 endif
 
-if filereadable(expand("$HOME/bin/touch_handler_cgis"))
+if has('autocmd') && filereadable(expand("$HOME/bin/touch_handler_cgis"))
     augroup TouchHandlerScript
         au!
         au BufWritePost * let output = system(expand("$HOME/bin/touch_handler_cgis"))
