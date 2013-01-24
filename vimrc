@@ -317,7 +317,6 @@ if has('autocmd')
     augroup InstantSettings
         au!
         au BufWritePost ~/.vimrc :source ~/.vimrc
-        au BufLeave ~/.vimrc :source ~/.vimrc
     augroup END
 
     augroup RedrawOnResize
