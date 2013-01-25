@@ -460,3 +460,11 @@ vnoremap   <Leader>a<Bar>   :Tabularize   /<Bar><CR>
 let g:solarized_termcolors = 256
 let g:solarized_style      = "dark"
 
+
+" =============================================================================
+" Syntastic settings
+" =============================================================================
+
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+
