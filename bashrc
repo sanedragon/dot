@@ -29,11 +29,12 @@ if [ -n "$(which brew 2> /dev/null)" ]; then
     fi
 fi
 
-
+# so hard to find this freaking thing
 if [ -n "$(which git-completion.sh 2> /dev/null)" ]; then
     source git-completion.sh
 else
-    [ -x /usr/share/git-core/git-completion.bash ] && source /usr/share/git-core/git-completion.bash
+    [ -e /usr/share/git-core/git-completion.bash ] && source /usr/share/git-core/git-completion.bash
+    [ -e /usr/share/git-core/contrib/completion/git-prompt.sh ] && source /usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
 [ -n "$(which bash-colors.sh 2> /dev/null)" ]       && source bash-colors.sh

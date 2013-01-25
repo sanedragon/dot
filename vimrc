@@ -13,7 +13,10 @@ set all&
 
 let g:pathogen_disabled = []
 if v:version < 702
-    let g:pathogen_disabled += ['tagbar', 'neocomplcache', 'jedi-vim']
+    let g:pathogen_disabled += ['tagbar', 'neocomplcache',]
+endif
+if v:version < 703 || has('python')
+    let g:pathogen_disabled += ['jedi-vim',]
 endif
 
 " bring in Pathogen
