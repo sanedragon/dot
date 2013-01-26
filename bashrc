@@ -37,6 +37,7 @@ else
     [ -e /usr/share/git-core/contrib/completion/git-prompt.sh ] && source /usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
+[ -n "$(which virtualenvwrapper.sh 2> /dev/null)" ] && source virtualenvwrapper.sh
 [ -n "$(which bash-colors.sh 2> /dev/null)" ]       && source bash-colors.sh
 [ -n "$(which git-helpers.sh 2> /dev/null)" ]       && source git-helpers.sh
 [ -n "$(which work.sh 2> /dev/null)" ]              && source work.sh
