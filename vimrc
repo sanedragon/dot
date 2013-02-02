@@ -212,7 +212,8 @@ set spelllang=en_us
 
 set wildmenu
 set wildmode=list:longest
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe,*.pyc,*.DS_Store,*.db
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.bak,*.exe
+set wildignore+=*.pyc,*.DS_Store,*.db
 
 
 " ==============================================================================
@@ -372,7 +373,8 @@ endif
 if has('autocmd') && filereadable(expand("$HOME/bin/touch_handler_cgis"))
     augroup TouchHandlerScript
         au!
-        au BufWritePost * let output = system(expand("$HOME/bin/touch_handler_cgis"))
+        au BufWritePost *
+                \ let output = system(expand("$HOME/bin/touch_handler_cgis"))
     augroup END
 endif
 
@@ -508,4 +510,4 @@ let g:solarized_style      = "dark"
 
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-
+let g:syntastic_python_checker_args='--ignore=E501'
