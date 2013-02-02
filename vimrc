@@ -93,7 +93,7 @@ set cursorline
 "set cursorcolumn
 "if exists('+colorcolumn') | set colorcolumn+=80,120 | endif
 if exists('+colorcolumn')
-    let &colorcolumn=join(range(81,999),",")
+    let &colorcolumn=join(range(81,999), ',')
 endif
 
 set list
@@ -118,9 +118,9 @@ set fillchars+=vert:│
 " ==============================================================================
 
 hi clear ColorColumn
-"hi link ColorColumn CursorLine
-highlight ColorColumn ctermbg=233 guibg=#222222
-highlight CursorLine ctermbg=233 guibg=#222222
+hi ColorColumn ctermbg=233 guibg=#222222
+hi clear CursorLine
+hi CursorLine ctermbg=233 guibg=#222222
 
 hi currentLine term=reverse cterm=reverse gui=reverse
 hi breakPoint  term=NONE    cterm=NONE    gui=NONE
