@@ -88,6 +88,7 @@ set viminfo^=%
 " appearance
 " =============================================================================
 
+set enc=utf-8
 syntax enable
 set t_Co=256
 set background=dark
@@ -97,8 +98,20 @@ set cursorline
 "set cursorcolumn
 if exists('+colorcolumn') | set colorcolumn+=80,120 | endif
 
-set list listchars=tab:▸\ ,trail:·",eol:¬,nbsp:␣,extends:›,precedes:‹
-set fillchars+=vert:│",stlnc:─╎║┃,fold:\·,diff:\·,stl:\
+set list
+set listchars+=tab:▸\ 
+set listchars+=trail:·
+set listchars+=nbsp:␣
+set listchars+=extends:›
+set listchars+=precedes:‹
+set listchars+=eol:\ 
+
+set fillchars+=stl:\ 
+set fillchars+=stlnc:\ 
+set fillchars+=fold:\·
+set fillchars+=diff:\·
+set fillchars+=vert:│
+
 "set showbreak=→
 
 
