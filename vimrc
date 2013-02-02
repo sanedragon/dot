@@ -41,7 +41,7 @@ let &rtp = pathogen#join(list)
 " ==============================================================================
 
 set nocompatible
-set encoding=utf-8
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set shortmess+=I
 set completeopt+=preview,menu
 set number
@@ -75,10 +75,6 @@ set backspace=indent,eol,start
 set splitbelow
 set splitright
 set switchbuf=useopen,usetab
-if has('mouse')
-    set mouse=a
-    set mousemodel=popup_setpos
-endif
 set viminfo^=%
 "filetype plugin indent on
 "set spell
@@ -88,7 +84,6 @@ set viminfo^=%
 " appearance
 " ==============================================================================
 
-set enc=utf-8
 syntax enable
 set t_Co=256
 set background=dark
@@ -247,6 +242,17 @@ endif
 
 
 " ==============================================================================
+" mouse
+" ==============================================================================
+
+if has('mouse')
+    set mouse=a
+    set mousemodel=popup_setpos
+endif
+
+
+
+" ==============================================================================
 " keyboard mappings
 " ==============================================================================
 
@@ -393,6 +399,20 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+if has('autocmd')
+    augroup CloseNERDTreeIfLastWindow
+        autocmd!
+        autocmd BufEnter *
+            \ if winnr("$") == 1                      |
+            \     if exists("b:NERDTreeType")         |
+            \         if b:NERDTreeType == "primary"  |
+            \             quit                        |
+            \         endif                           |
+            \     endif                               |
+            \ endif                                   |
+    augroup END
+endif
 
 
 " ==============================================================================
