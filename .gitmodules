@@ -88,3 +88,6 @@
 [submodule "vim/bundle/characterize"]
 	path = vim/bundle/characterize
 	url = git://github.com/tpope/vim-characterize.git
+[submodule "vim/bundle/railscast"]
+	path = vim/bundle/railscast
+	url = git://github.com/jpo/vim-railscasts-theme.git
